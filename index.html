@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- 완벽한 다크모드 선언으로 모바일 브라우저 색상 충돌 원천 차단 -->
     <meta name="color-scheme" content="dark">
-    <title>IK BOOKMARK</title>
+    <!-- 1. 크롬 창 제목을 "IK GEMS"로 변경 -->
+    <title>IK GEMS</title>
     
-    <!-- ★ 브라우저 탭에 표시될 아이콘(파비콘) 설정 -->
-    <link rel="icon" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png"> <!-- 모바일 홈화면 추가 시 아이콘 -->
+    <!-- 2. 크롬 창에 나오는 아이콘을 "logo2.png"로 변경 -->
+    <link rel="icon" href="logo2.png">
+    <link rel="apple-touch-icon" href="logo2.png"> <!-- 모바일 홈화면 추가 시 아이콘 -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,6 +75,15 @@
             letter-spacing: 5px; 
             margin: 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            cursor: pointer; /* 클릭할 수 있는 요소임을 나타내는 포인터 커서 */
+            transition: color 0.25s ease, transform 0.2s ease;
+            user-select: none;
+        }
+
+        /* 헤더 글자 호버 효과 */
+        .header-title:hover {
+            color: #ffffff;
+            transform: scale(1.02);
         }
 
         /* 중앙 영역 */
@@ -246,7 +256,8 @@
         
         <!-- 최상단 헤더 -->
         <div class="header-bar">
-            <h1 class="header-title">IK BOOKMARK</h1>
+            <!-- 3. 현재창에서 링크가 바로 작동되도록 onclick 이벤트 지정 -->
+            <h1 class="header-title" onclick="window.location.href='https://koindori-en.github.io/IK/'">IK BOOKMARK</h1>
         </div>
 
         <!-- 내부 투명 미니멀 테이블 영역 -->
