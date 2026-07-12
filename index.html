@@ -311,42 +311,41 @@
         }
 
         .workspace-title {
-            color: #059669; /* 한층 차분하고 고급스러운 미드 다크 그린 */
+            color: #059669; /* 격조 있는 딥 다크 그린 */
             font-size: 13.5px;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 9px;
+            gap: 7px;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        /* ★ 고급스럽고 부드럽게 연출된 천천히 움직이는 숨쉬는 아이콘 */
+        /* ★ 고급스럽고 세련되게 다듬어진 미세 펄스 아이콘 */
         .breathing-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #047857; /* 묵직하고 우아한 딥 다크 그린 */
+            width: 6px;
+            height: 6px;
+            background-color: #10b981; /* 시인성이 보강된 에메랄드 그린 */
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(4, 120, 87, 0.6);
-            /* 우아함을 극대화하기 위해 펄스 주기를 4초로 지연시키고 부드러운 ease-in-out 가속 적용 */
-            animation: pulse-green-slow 4s infinite ease-in-out;
+            /* 너무 넓게 튀지 않으면서 은은하고 고급스럽게 천천히 움직이는 속도 조절 */
+            animation: pulse-green-refined 3.5s infinite ease-in-out;
             display: inline-block;
             flex-shrink: 0;
         }
 
-        @keyframes pulse-green-slow {
+        @keyframes pulse-green-refined {
             0% {
-                transform: scale(0.9);
-                box-shadow: 0 0 0 0 rgba(4, 120, 87, 0.5);
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
             }
             50% {
-                transform: scale(1.15);
-                box-shadow: 0 0 0 10px rgba(4, 120, 87, 0);
+                transform: scale(1.05);
+                box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); /* 파장 범위를 5px로 미세 수축하여 세련되게 조절 */
             }
             100% {
-                transform: scale(0.9);
-                box-shadow: 0 0 0 0 rgba(4, 120, 87, 0);
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
             }
         }
 
@@ -379,33 +378,37 @@
             background: rgba(0, 0, 0, 0.55);
         }
 
-        /* ★ 단일 검색 전용 에메랄드 그린 버튼 -> 격조 높은 딥 다크 그린 리디자인 */
+        /* ★ 단일 검색 전용 에메랄드 그린 버튼 -> 격조 높은 프리미엄 딥 다크 그린 리디자인 */
         .search-action-btn.btn-search {
-            background: rgba(4, 120, 87, 0.12);
-            border: 1px solid rgba(4, 120, 87, 0.35);
-            color: #059669; /* 신뢰감을 주는 시각적 딥 그린 */
+            background: linear-gradient(135deg, rgba(6, 78, 59, 0.7) 0%, rgba(4, 120, 87, 0.5) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #a7f3d0; /* 부드럽고 가독성 높은 박하색 계열 */
             font-weight: 600;
             font-size: 13px;
-            padding: 0 22px;
+            padding: 0 24px;
             border-radius: 6px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
-            transition: all 0.2s ease;
+            gap: 6px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .search-action-btn.btn-search:hover {
-            background: rgba(4, 120, 87, 0.25);
-            border-color: rgba(4, 120, 87, 0.55);
-            color: #34d399; /* 마우스 호버시에만 화사한 라이트 에메랄드 전이 */
-            box-shadow: 0 0 12px rgba(4, 120, 87, 0.3);
+            background: linear-gradient(135deg, rgba(4, 120, 87, 0.85) 0%, rgba(16, 185, 129, 0.65) 100%);
+            border-color: rgba(52, 211, 153, 0.5);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.35), 0 4px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-1px);
         }
 
         .search-action-btn:active {
-            transform: scale(0.97);
+            transform: translateY(1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
         /* 결과 노출 뷰포트 영역 */
@@ -833,7 +836,7 @@
             <div class="workspace-header">
                 <h2 class="workspace-title">
                     <span class="breathing-dot"></span>
-                    네이버 사전
+                    Naver Dictionary
                 </h2>
             </div>
             
@@ -1027,29 +1030,22 @@
                     }
                 }
 
-                // 웹페이지 내부 시각화 화면 구성
+                // 웹페이지 내부 시각화 화면 구성 ("검색어" 및 하단 "최근 검색어" 항목 제거)
                 let resultHtml = `
                     <div class="answer-content">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(4, 120, 87, 0.15); padding-bottom: 8px; margin-bottom: 6px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(4, 120, 87, 0.15); padding-bottom: 8px; margin-bottom: 6px;">
                             <div>
-                                <span style="font-size: 10px; color: #059669; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">검색어</span>
-                                <h3 style="margin: 1px 0 0 0; font-size: 16px; color: #ffffff; font-weight: 700;">${escapeHtml(query)}</h3>
+                                <h3 style="margin: 0; font-size: 18px; color: #ffffff; font-weight: 700; letter-spacing: 0.5px;">${escapeHtml(query)}</h3>
                             </div>
                             <div style="text-align: right;">
-                                <span style="font-size: 10px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">번역 및 대역어</span>
-                                <div style="font-size: 14px; font-weight: 700; color: #059669; margin-top: 1px;">${escapeHtml(translationText)}</div>
+                                <div style="font-size: 14px; font-weight: 700; color: #10b981;">${escapeHtml(translationText)}</div>
                             </div>
                         </div>
                         ${dictHtml}
-                        
-                        <!-- 결과 영역 바로 아래에 최근 검색어 목록 삽입하여 접근성 극대화 -->
-                        <div id="resultRecentWordsSection" style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);">
-                        </div>
                     </div>
                 `;
 
                 viewport.innerHTML = resultHtml;
-                renderRecentWordsInResult(); // 결과창 내부 히스토리 업데이트
 
             } catch (err) {
                 console.error(err);
@@ -1095,27 +1091,14 @@
             if (event) event.stopPropagation(); // 부모 칩 클릭 이벤트 차단
             recentWords.splice(index, 1);
             localStorage.setItem('voca_recent_searches', JSON.stringify(recentWords));
-            
-            // 현재 활성 뷰 확인 후 알맞은 히스토리 다시 그리기
-            const recentSec = document.getElementById('resultRecentWordsSection');
-            if (recentSec) {
-                renderRecentWordsInResult();
-            } else {
-                renderRecentWords();
-            }
+            renderRecentWords();
         }
 
         // 단어장 전체 비우기
         function clearAllWords() {
             recentWords = [];
             localStorage.removeItem('voca_recent_searches');
-            
-            const recentSec = document.getElementById('resultRecentWordsSection');
-            if (recentSec) {
-                renderRecentWordsInResult();
-            } else {
-                renderRecentWords();
-            }
+            renderRecentWords();
         }
 
         // 단어장 타일을 눌렀을 때 네이버 사전으로 바로 검색하는 숏컷
@@ -1124,7 +1107,7 @@
             searchWord();
         }
 
-        // 초기 대기 상태 화면 렌더링
+        // 초기 대기 상태 화면 렌더링 (최근 검색어 관리)
         function renderRecentWords() {
             const viewport = document.getElementById('vocaAnswerViewport');
             
@@ -1156,37 +1139,6 @@
 
             html += `</div>`;
             viewport.innerHTML = html;
-        }
-
-        // 결과화면용 하단 최근 검색어 컴포넌트 렌더링
-        function renderRecentWordsInResult() {
-            const section = document.getElementById('resultRecentWordsSection');
-            if (!section) return;
-
-            if (recentWords.length === 0) {
-                section.style.display = 'none';
-                return;
-            }
-
-            let html = `
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <span style="color: #94a3b8; font-weight: 600; font-size: 10.5px;">최근 검색어</span>
-                    <button class="voca-clear-btn" onclick="clearAllWords()" style="font-size: 10px;">전체 삭제</button>
-                </div>
-                <div class="voca-tag-wrapper">
-            `;
-
-            recentWords.forEach((word, index) => {
-                html += `
-                    <span class="voca-tag" onclick="searchDirectly('${word.replace(/'/g, "\\'")}')" style="padding: 1px 6px; font-size: 11px;">
-                        <span>${escapeHtml(word)}</span>
-                        <span class="voca-tag-delete" onclick="deleteWord(${index}, event)" style="font-size: 8.5px; padding: 0 2px;">✕</span>
-                    </span>
-                `;
-            });
-
-            html += `</div>`;
-            section.innerHTML = html;
         }
 
         // XSS 차단을 위한 보안 엔티티 치환 헬퍼 함수
