@@ -34,37 +34,36 @@
             /* 창 크기를 줄였을 때 잘리지 않고 상하 스크롤이 되도록 auto 설정 */
             overflow-y: auto; 
             -webkit-font-smoothing: antialiased; /* 텍스트 렌더링 고급화 */
-            padding: 40px 20px; /* 창을 줄였을 때 여백 확보 */
+            padding: 15px; /* 내부 공간 확보를 위해 여백 최적화 */
         }
 
         /* 메인 슬라이드 캔버스 */
         .slide-container {
             width: 100%;
             max-width: 1280px;
-            min-height: 80vh;
-            height: auto; 
+            min-height: auto; /* 타이트하고 왜곡 없는 핏을 위해 높이 유연화 */
             /* 은은한 네이비 빛이 도는 다크 스페이스 배경 */
             background: linear-gradient(145deg, #111827 0%, #0f172a 50%, #1e1b4b 100%);
             display: flex;
             flex-direction: column;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255,255,255,0.05);
-            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+            border-radius: 12px;
             overflow: hidden; 
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* 헤더 영역 */
+        /* 헤더 영역 - 높이를 대폭 줄여 상단 공간 확보 */
         .header-bar {
             width: 100%;
             background-color: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
-            padding: 0 35px;
+            padding: 0 25px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
             display: flex;
             align-items: center;
             justify-content: center; 
-            height: 52px; 
+            height: 40px; /* 52px에서 40px로 축소 */
             flex-shrink: 0;
             z-index: 10;
             position: relative;
@@ -72,9 +71,9 @@
 
         .header-title {
             color: #e2e8f0; 
-            font-size: 15px;
+            font-size: 13px; /* 가독성을 해치지 않는 선에서 슬림하게 축소 */
             font-weight: 700;
-            letter-spacing: 5px; 
+            letter-spacing: 4px; 
             margin: 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             cursor: pointer;
@@ -88,10 +87,10 @@
 
         /* 중앙 테이블 영역 (배경을 투명하게 날려 미니멀리즘 강조) */
         .bookmark-grid {
-            margin: 10px 15px 15px 15px; 
+            margin: 5px 10px 10px 10px; 
             display: flex;
-            gap: 25px; 
-            padding: 20px 30px;
+            gap: 15px; /* 사이 공간을 밀착시켜 세로 높이 축소 */
+            padding: 10px 20px;
             flex-grow: 1;
             /* 창 분할 및 축소 시 유연하게 감싸기(wrap) 적용 */
             flex-wrap: wrap; 
@@ -100,16 +99,16 @@
         .column {
             display: flex;
             flex-direction: column;
-            gap: 30px; 
+            gap: 15px; /* 카테고리간 여백 축소 */
             /* 기본 3단 배열 */
-            width: calc((100% - 50px) / 3);
+            width: calc((100% - 30px) / 3);
         }
 
         /* 카드 형식의 글래스모피즘 제거 -> 투명하고 미니멀하게 */
         .category-box {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px; /* 버튼과 타이틀 밀착 */
             background: transparent; 
             border: none;
             box-shadow: none;
@@ -117,10 +116,10 @@
 
         .cat-title {
             color: #94a3b8; /* 세련된 실버 그레이 */
-            font-size: 14px; 
+            font-size: 12px; /* 14px에서 12px로 슬림화 */
             font-weight: 600; 
-            border-bottom: 1px solid rgba(148, 163, 184, 0.15); 
-            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12); 
+            padding-bottom: 4px;
             margin: 0;
             letter-spacing: 0.5px;
             flex-shrink: 0; 
@@ -129,7 +128,7 @@
         .links-wrapper {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px 8px; 
+            gap: 6px 6px; /* 줄간격 및 여백을 밀접하게 줄임 */
             align-content: flex-start;
         }
 
@@ -143,17 +142,17 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            /* 높이를 기존 6px에서 4px로 낮춰 1단계 더 컴팩트하고 날렵하게 조정 */
-            padding: 4px 10px;
+            /* 두께 및 상하 패딩을 정밀 조율하여 텍스트 왜곡 차단 및 슬림화 */
+            padding: 3px 8px;
             /* 반투명한 유리 배경 */
             background-color: rgba(255, 255, 255, 0.03); 
             /* 배경 흐림 효과로 고급스러움 극대화 */
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             color: #cbd5e1; /* 부드러운 화이트/실버 */
-            font-size: 14px; 
+            font-size: 12px; /* 깔끔하고 압축된 프리미엄 텍스트 디자인 */
             font-weight: 500;
-            border-radius: 7px; 
+            border-radius: 5px; 
             cursor: pointer;
             
             /* CSS 변수 적용 */
@@ -211,8 +210,8 @@
                 transform: none; 
                 
                 /* 변수에 지정된 색상으로 유리 버튼 아래로 퍼지는 네온 글로우 그림자 */
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 
-                            0 0 15px var(--btn-glow-shadow);
+                box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3), 
+                            0 0 10px var(--btn-glow-shadow);
                 z-index: 2; 
             }
 
@@ -229,16 +228,16 @@
             }
         }
 
-        /* ★ 하단에 아름답게 정렬되는 제미나이 젬스 독자적인 테이블 섹션 */
+        /* ★ 하단에 컴팩트하게 정렬되는 제미나이 젬스 독립 테이블 섹션 */
         .gems-section {
             width: 100%;
             background: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px 35px;
+            padding: 12px 25px; /* 패딩을 절반 가량 압축하여 세로 공간 최적화 */
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 8px;
             margin-top: auto; /* 하단 밀착 */
             flex-shrink: 0;
             z-index: 5;
@@ -248,20 +247,20 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.15); 
-            padding-bottom: 8px;
-            margin-bottom: 5px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12); 
+            padding-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .gems-title {
             color: #38bdf8; /* 세련된 제미나이 스카이블루 */
-            font-size: 14px; 
+            font-size: 12px; /* 14px에서 12px로 슬림 디자인 매핑 */
             font-weight: 700; 
-            letter-spacing: 3px;
+            letter-spacing: 2.5px;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
         }
 
@@ -269,7 +268,7 @@
         .gems-title::before {
             content: '✦';
             color: #38bdf8;
-            font-size: 14px;
+            font-size: 11px;
             animation: pulse-glow 2s infinite alternate;
         }
 
@@ -278,31 +277,14 @@
             100% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 8px #38bdf8; }
         }
 
-        /* 일자로 늘어서는 슬라이딩 트랙 컨테이너 */
+        /* ★ 스크롤바 없는 2열(줄) 전용 랩 트랙 */
         .gems-track {
             display: flex;
             flex-direction: row;
-            flex-wrap: nowrap;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 5px 2px 12px 2px;
-            /* 모바일 세련된 터치 감도 스와이프 활성 */
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* 가로 스크롤바 세련된 다크 크롬 디자인 */
-        .gems-track::-webkit-scrollbar {
-            height: 4px;
-        }
-        .gems-track::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .gems-track::-webkit-scrollbar-thumb {
-            background: rgba(56, 189, 248, 0.15);
-            border-radius: 10px;
-        }
-        .gems-track::-webkit-scrollbar-thumb:hover {
-            background: rgba(56, 189, 248, 0.4);
+            flex-wrap: wrap; /* 가로 스와이프 대신 자연스럽게 하단 배치 */
+            gap: 6px 8px; /* 세로줄 6px, 가로줄 8px 배치 */
+            padding: 2px 0 5px 0;
+            overflow: hidden; /* 스크롤바 원천 제거 */
         }
 
         /* ========================================================
@@ -311,12 +293,12 @@
         @media (max-width: 1024px) {
             .column {
                 /* 공간이 좁아지면 2단 배열로 자동 전환 */
-                width: calc((100% - 25px) / 2);
+                width: calc((100% - 15px) / 2);
             }
             .column:last-child {
                 /* 마지막 세 번째 열은 전체 너비 사용 */
                 width: 100%; 
-                margin-top: 10px;
+                margin-top: 5px;
             }
         }
 
@@ -344,7 +326,7 @@
             }
 
             .header-bar {
-                padding: 0 20px;
+                padding: 0 15px;
                 position: sticky; 
                 top: 0; 
                 background-color: rgba(15, 23, 42, 0.85) !important;
@@ -353,6 +335,7 @@
                 box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
                 justify-content: center; /* 타이틀 중앙 정렬 */
+                height: 38px;
             }
 
             .bookmark-grid {
@@ -360,30 +343,29 @@
                 flex-wrap: nowrap;
                 height: auto;
                 margin: 0; 
-                padding: 25px 20px 20px 20px; 
+                padding: 15px 15px 20px 15px; /* 모바일 전용 최적화 */
                 flex-grow: 1;
             }
 
             .column {
                 width: 100%; /* 모바일에서는 1단 배열 */
-                gap: 24px; 
+                gap: 15px; 
                 margin-top: 0;
             }
 
             .links-wrapper {
-                gap: 12px 10px; /* 모바일 터치 편의성을 위해 버튼 간격 확대 */
+                gap: 8px 6px; /* 모바일 터치 편의성과 밀착을 함께 반영 */
             }
 
             .link-btn {
-                /* 모바일에서도 높이를 1단계 낮춰 세로 비율을 컴팩트하게 조정 */
-                padding: 6px 12px; 
-                font-size: 14px; 
+                padding: 4px 10px; 
+                font-size: 13px; 
                 background-color: rgba(255, 255, 255, 0.05); /* 모바일에서는 살짝 더 밝게 */
             }
 
             /* 모바일 환경에서의 제미나이 젬스 하단 섹션 */
             .gems-section {
-                padding: 20px 20px 30px 20px;
+                padding: 12px 15px 20px 15px;
                 background: rgba(0, 0, 0, 0.4);
             }
         }
@@ -567,7 +549,7 @@
 
         </div>
 
-        <!-- ★ 전체 그리드 영역 하단에 분리 및 재구성한 프리미엄 'Gemini Gems' 섹션 -->
+        <!-- ★ 전체 그리드 영역 하단에 분리 및 재구성한 프리미엄 'Gemini Gems' 섹션 (스크롤 제거 및 2열 가로 랩 구조) -->
         <div class="gems-section">
             <div class="gems-header">
                 <h2 class="gems-title">Gemini Gems</h2>
@@ -585,6 +567,7 @@
                 <div class="link-btn color-gemini-gems" onclick="window.open('https://gemini.google.com/gem/46c07a5caa3e', '_blank')">Professional Writer</div>
                 <div class="link-btn color-gemini-gems" onclick="window.open('https://gemini.google.com/gem/e133ebf8b873', '_blank')">Gaonnuri</div>
                 <div class="link-btn color-gemini-gems" onclick="window.open('https://gemini.google.com/gem/7e473db39e7b', '_blank')">Powerpoint Designer</div>
+                <div class="link-btn color-gemini-gems" onclick="window.open('https://gemini.google.com/gem/120de83277c9', '_blank')">Infographic Designer</div>
             </div>
         </div>
 
