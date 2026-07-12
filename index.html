@@ -287,16 +287,16 @@
             overflow: hidden; /* 스크롤바 원천 제거 */
         }
 
-        /* ★ 제미나이 질문 검색 및 답변 전용 프리미엄 워크스페이스 클래스 */
+        /* ★ 제미나이 보카(Voca) 전용 슬림 & 미니멀 워크스페이스 클래스 */
         .ai-workspace-section {
             width: 100%;
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(10, 15, 30, 0.4);
             backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 20px 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 16px 25px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             margin-top: auto; /* 하단 최우선 정착 */
             z-index: 5;
         }
@@ -305,159 +305,153 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            border-bottom: 1px solid rgba(147, 51, 234, 0.2); 
-            padding-bottom: 6px;
-            margin-bottom: 4px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06); 
+            padding-bottom: 5px;
+            margin-bottom: 2px;
         }
 
         .workspace-title {
-            color: #c084fc; /* 우아한 라벤더 퍼플 */
+            color: #94a3b8; /* 차분하고 튀지 않는 실버 그레이 */
             font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
+            font-weight: 600;
+            letter-spacing: 2px;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 6px;
-            text-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
+            gap: 5px;
         }
 
         .workspace-title::before {
-            content: '⚡';
-            color: #c084fc;
+            content: '📖';
             font-size: 11px;
-            animation: lightning-glow 1.5s infinite alternate;
+            opacity: 0.8;
         }
 
-        @keyframes lightning-glow {
-            0% { opacity: 0.5; filter: drop-shadow(0 0 2px #c084fc); }
-            100% { opacity: 1; filter: drop-shadow(0 0 8px #c084fc); }
-        }
-
-        /* 프리미엄 검색창 폼 */
+        /* 프리미엄 검색창 폼 (차분한 무채색 계열) */
         .search-container {
             display: flex;
             width: 100%;
-            gap: 10px;
+            gap: 8px;
             position: relative;
         }
 
         .search-input {
             flex-grow: 1;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
-            padding: 10px 16px;
-            color: #f1f5f9;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            padding: 8px 14px;
+            color: #e2e8f0;
             font-family: inherit;
-            font-size: 13.5px;
+            font-size: 13px;
             outline: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.25s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
         }
 
         .search-input:focus {
-            border-color: rgba(147, 51, 234, 0.6);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5),
-                        0 0 12px rgba(147, 51, 234, 0.25);
-            background: rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4),
+                        0 0 8px rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.5);
         }
 
+        /* 세련되었지만 전혀 튀지 않는 미니멀 단색 버튼 */
         .search-submit-btn {
-            background: linear-gradient(135deg, #7e22ce 0%, #6366f1 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 0 20px;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 12.5px;
+            padding: 0 16px;
+            border-radius: 6px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            gap: 4px;
+            transition: all 0.2s ease;
         }
 
         .search-submit-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-            filter: brightness(1.1);
+            background: rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .search-submit-btn:active {
-            transform: translateY(1px);
+            transform: scale(0.98);
         }
 
         /* 답변 결과 공간 */
         .answer-viewport {
             width: 100%;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 14px 18px;
-            min-height: 48px;
-            max-height: 350px;
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            padding: 10px 14px;
+            min-height: 40px;
+            max-height: 250px;
             overflow-y: auto;
-            color: #94a3b8;
-            font-size: 13px;
-            line-height: 1.6;
-            transition: all 0.4s ease;
+            color: #64748b;
+            font-size: 12.5px;
+            line-height: 1.5;
+            transition: all 0.3s ease;
             position: relative;
         }
 
         /* 응답이 있는 활성 상태 */
         .answer-viewport.active {
-            background: rgba(0, 0, 0, 0.45);
-            border-color: rgba(147, 51, 234, 0.15);
-            color: #e2e8f0;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+            background: rgba(0, 0, 0, 0.35);
+            border-color: rgba(255, 255, 255, 0.04);
+            color: #cbd5e1;
         }
 
         /* 마크다운 형태 응답 스타일링 */
         .answer-content h3 {
-            color: #c084fc;
-            margin: 12px 0 6px 0;
-            font-size: 14px;
+            color: #e2e8f0;
+            margin: 8px 0 4px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 2px;
         }
         .answer-content strong {
-            color: #f1f5f9;
+            color: #ffffff;
             font-weight: 600;
         }
         .answer-content p {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .answer-content ul {
-            margin-left: 18px;
-            margin-bottom: 8px;
-            list-style-type: square;
+            margin-left: 14px;
+            margin-bottom: 6px;
+            list-style-type: circle;
         }
         .answer-content li {
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
         .answer-content code {
-            background: rgba(147, 51, 234, 0.15);
-            color: #e9d5ff;
-            padding: 2px 6px;
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #f1f5f9;
+            padding: 1px 4px;
+            border-radius: 3px;
             font-family: monospace;
-            font-size: 12px;
+            font-size: 11.5px;
         }
 
-        /* 로더 애니메이션 */
+        /* 로더 애니메이션 (차분한 화이트 펄스) */
         .ai-loader {
             display: none;
             align-items: center;
-            gap: 8px;
-            color: #c084fc;
-            font-weight: 500;
+            gap: 6px;
+            color: #94a3b8;
+            font-weight: 400;
         }
 
         .pulse-bubble {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
-            background-color: #c084fc;
+            background-color: #94a3b8;
             animation: bubble-bounce 1.4s infinite ease-in-out both;
         }
 
@@ -776,18 +770,17 @@
             </div>
         </div>
 
-        <!-- ★ 제미나이 질의응답을 즉석에서 처리할 수 있는 프리미엄 Gemini Workspace 섹션 -->
+        <!-- ★ 차분하고 실용적인 미니멀 사전을 연상시키는 Gemini Voca 섹션 -->
         <div class="ai-workspace-section">
             <div class="workspace-header">
-                <h2 class="workspace-title">Gemini Quick Workspace</h2>
+                <h2 class="workspace-title">Gemini Voca</h2>
             </div>
             
             <!-- 검색 질의 폼 -->
             <div class="search-container">
-                <input type="text" class="search-input" id="aiQueryInput" placeholder="제미나이에게 무엇이든 물어보세요... (Enter 입력 시 검색)" onkeypress="handleKeyPress(event)">
+                <input type="text" class="search-input" id="aiQueryInput" placeholder="단어, 숙어 또는 원어를 입력하세요... (Enter 입력)" onkeypress="handleKeyPress(event)">
                 <button class="search-submit-btn" onclick="submitAIQuestion()">
-                    <span>질문하기</span>
-                    <span style="font-size: 11px;">✦</span>
+                    <span>검색</span>
                 </button>
             </div>
 
@@ -796,12 +789,12 @@
                 <div class="pulse-bubble pulse-bubble-1"></div>
                 <div class="pulse-bubble pulse-bubble-2"></div>
                 <div class="pulse-bubble pulse-bubble-3"></div>
-                <span style="font-size: 12px; margin-left: 4px;">제미나이가 답변을 생성하는 중입니다...</span>
+                <span style="font-size: 11.5px; margin-left: 4px;">의미 분석 중...</span>
             </div>
 
             <!-- 답변 출력 공간 -->
             <div class="answer-viewport" id="aiAnswerViewport">
-                아직 질문이 없습니다. 위에 궁금한 질문을 입력하고 제미나이의 실시간 응답을 받아보세요.
+                영어 또는 외국어 단어를 입력하면 즉시 가장 명료한 한국어 뜻과 예문이 제시됩니다.
             </div>
         </div>
 
@@ -874,7 +867,7 @@
 
             // UI 상태를 즉시 전이 (로딩 중)
             viewport.classList.remove('active');
-            viewport.innerHTML = "제미나이의 신호를 기다리는 중...";
+            viewport.innerHTML = "조회 중...";
             loader.style.display = 'flex';
             inputField.disabled = true;
 
@@ -882,13 +875,13 @@
             const apiKey = "";
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
-            // API 호출 전송 본문 생성
+            // API 호출 전송 본문 생성 (극도로 빠르고 가벼운 요약형 사전 프롬프트 설정)
             const payload = {
                 contents: [{
                     parts: [{ text: query }]
                 }],
                 systemInstruction: {
-                    parts: [{ text: "당신은 세계적인 지식 큐레이터이자 다정하고 명쾌한 인공지능 비서입니다. 사용자의 질문에 맞춰 보기 쉽고 깔끔하게 한국어로 구조화하여 상세히 답변해주세요." }]
+                    parts: [{ text: "당신은 극도로 빠르고 군더더기 없는 한국어 사전 및 외래어/원어 분석 비서입니다. 입력된 외국어 단어, 숙어, 문장의 한국어 뜻을 가장 간결하고 명확하게 사전에 등록된 레이아웃으로 출력하십시오. 친절한 서론, 인사말, 종결어미 등의 부가적인 문장은 절대로 생략하십시오. 속도가 생명이므로, 즉시 아래 형식을 엄수해 답변하십시오: ### [입력 단어/원어]\n- **한국어 핵심 뜻**: [핵심 뜻 정리]\n- **품사**: [품사 분류]\n- **예문**: [짧고 유용한 원어 예문 하나] (해석)" }]
                 }
             };
 
@@ -910,7 +903,7 @@
                     // Throttling 대비 지수 백오프 처리
                     retries--;
                     if (retries === 0) {
-                        displayError("네트워크 오류가 지속되어 제미나이에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+                        displayError("연결 오류가 지속되어 의미를 찾지 못했습니다. 잠시 후 다시 시도해 주세요.");
                         resetUIState();
                         return;
                     }
@@ -931,13 +924,13 @@
                         viewport.classList.add('active');
                         viewport.innerHTML = `<div class="answer-content">${parseMarkdown(replyText)}</div>`;
                     } else {
-                        displayError("답변 처리 과정에서 알 수 없는 빈 결과가 수신되었습니다.");
+                        displayError("사전 데이터 조회 중 빈 결과가 반환되었습니다.");
                     }
                 } catch (parseErr) {
-                    displayError("답변 데이터를 처리하는 과정에 이상이 발생했습니다.");
+                    displayError("사전 정보 처리 중 예기치 못한 내부 이상이 발생했습니다.");
                 }
             } else {
-                displayError("제미나이 API 서버 응답에 일시적 지연이 발생하고 있습니다. 잠시 후 다시 시도해보세요.");
+                displayError("사전 서버 응답 지연으로 뜻을 도출하지 못했습니다.");
             }
 
             resetUIState();
@@ -947,7 +940,7 @@
         function displayError(message) {
             const viewport = document.getElementById('aiAnswerViewport');
             viewport.classList.add('active');
-            viewport.innerHTML = `<div style="color: #f87171; font-weight: 500;">⚠️ 오류 발생: ${message}</div>`;
+            viewport.innerHTML = `<div style="color: #ef4444; font-weight: 500;">⚠️ ${message}</div>`;
         }
 
         // 로딩 완료 후 UI 입력 상태 원복
