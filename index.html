@@ -188,11 +188,13 @@
         /* 주민등록 (금색 테두리 + 주황색 호버 효과) */
         .color-jumin { --btn-border: rgba(212, 175, 55, 0.28); --btn-glow: rgba(249, 115, 22, 0.7); --btn-glow-shadow: rgba(249, 115, 22, 0.35); }
 
-        /* ★ 제미나이 젬스 전용 스타일 (금색 테두리 제거 및 원래의 미니멀한 감성 복원) */
+        /* ★ 제미나이 젬스 전용 스타일 (금색 테두리 제거, 크기 1단계 상향 및 원래의 미니멀한 감성 복원) */
         .color-gemini-gems {
             background-color: rgba(255, 255, 255, 0.02) !important;
             color: #94a3b8;
             border: 1px solid rgba(255, 255, 255, 0.04) !important;
+            font-size: 13.5px !important; /* 기존 12px에서 1단계 키워 가독성 상향 */
+            padding: 5px 12px !important; /* 가로세로 패딩을 넓혀 1단계 볼륨감 제공 */
         }
 
         /* ★ 떨림 없는 프리미엄 호버 이펙트 (Glow & No Translate) */
@@ -367,6 +369,12 @@
             .gems-section {
                 padding: 12px 15px 20px 15px;
                 background: rgba(0, 0, 0, 0.4);
+            }
+
+            /* 모바일 환경에서 젬스 버튼 크기 1단계 상향 연동 */
+            .gems-section .color-gemini-gems {
+                font-size: 14.5px !important;
+                padding: 7px 14px !important;
             }
         }
     </style>
