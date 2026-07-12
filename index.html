@@ -304,7 +304,7 @@
         .workspace-header {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06); 
             padding-bottom: 5px;
             margin-bottom: 2px;
@@ -787,6 +787,11 @@
         <div class="ai-workspace-section">
             <div class="workspace-header">
                 <h2 class="workspace-title">Gemini Voca</h2>
+                <!-- 우측 상단 API 키 세팅 및 상태 버튼 -->
+                <button onclick="toggleApiKeyModal()" id="apiKeyStatusBtn" style="margin-left: auto; background: transparent; border: none; color: #64748b; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 4px; outline: none; padding: 2px 6px; border-radius: 4px; transition: background 0.2s;">
+                    <span id="apiKeyDot" style="width: 6px; height: 6px; border-radius: 50%; background-color: #ef4444; display: inline-block;"></span>
+                    <span id="apiKeyText" style="font-weight: 500;">API 키 미설정 (클릭)</span>
+                </button>
             </div>
             
             <!-- 검색 질의 폼 -->
@@ -807,16 +812,83 @@
 
             <!-- 답변 출력 공간 -->
             <div class="answer-viewport" id="aiAnswerViewport">
-                영어 또는 외국어 단어를 입력하면 즉시 가장 명료한 한국어 뜻과 예문이 제시됩니다.
+                영어 또는 외국어 단어를 입력하면 즉시 가장 명료한 한국어 뜻과 예문이 제시됩니다. (사용 전 우측 상단의 API 키 설정을 완료해 주세요.)
             </div>
         </div>
 
+    </div>
+
+    <!-- API Key 설정 단정 모달 -->
+    <div id="apiKeyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: #111827; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; max-width: 400px; width: 100%; padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.8);">
+            <h3 style="color: #e2e8f0; font-size: 15px; margin-bottom: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px;">🔑 Gemini API 키 설정</h3>
+            <p style="color: #94a3b8; font-size: 12px; line-height: 1.6; margin-bottom: 16px;">
+                Gemini Voca 사전을 사용하려면 구글 AI Studio에서 무료로 발급받은 API 키가 필요합니다. 입력된 키는 브라우저 내부(localStorage)에만 안전하게 저장됩니다.
+            </p>
+            <input type="password" id="apiKeyInput" placeholder="AIzaSy..." style="width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; padding: 8px 12px; color: #f1f5f9; font-size: 13px; outline: none; margin-bottom: 16px;">
+            <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                <button onclick="toggleApiKeyModal()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; font-size: 12px; padding: 6px 12px; border-radius: 6px; cursor: pointer;">취소</button>
+                <button onclick="saveApiKey()" style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 12px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 500;">저장</button>
+            </div>
+        </div>
     </div>
 
     <script>
         // 전역 상태 제어 변수 및 네트워크 중단 컨트롤러 선언
         let isSearching = false;
         let currentAbortController = null;
+
+        // 웹페이지 초기화 시 API Key 체크
+        window.addEventListener('DOMContentLoaded', () => {
+            updateApiKeyStatus();
+        });
+
+        // API 키 로컬 상태 업데이트
+        function updateApiKeyStatus() {
+            const apiKey = localStorage.getItem('gemini_api_key');
+            const dot = document.getElementById('apiKeyDot');
+            const text = document.getElementById('apiKeyText');
+            const modalInput = document.getElementById('apiKeyInput');
+            
+            if (apiKey && apiKey.trim() !== "") {
+                dot.style.backgroundColor = '#22c55e'; // 초록색
+                text.innerText = "API 키 저장됨";
+                text.style.color = '#94a3b8';
+                if (modalInput) modalInput.value = apiKey;
+            } else {
+                dot.style.backgroundColor = '#ef4444'; // 빨간색
+                text.innerText = "API 키 미설정 (클릭)";
+                text.style.color = '#f87171';
+                if (modalInput) modalInput.value = "";
+            }
+        }
+
+        // 모달 열고 닫기
+        function toggleApiKeyModal() {
+            const modal = document.getElementById('apiKeyModal');
+            if (modal.style.display === 'none' || modal.style.display === '') {
+                modal.style.display = 'flex';
+                const storedKey = localStorage.getItem('gemini_api_key');
+                if (storedKey) {
+                    document.getElementById('apiKeyInput').value = storedKey;
+                }
+                document.getElementById('apiKeyInput').focus();
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        // API 키 로컬 보존
+        function saveApiKey() {
+            const keyInput = document.getElementById('apiKeyInput').value.trim();
+            if (keyInput) {
+                localStorage.setItem('gemini_api_key', keyInput);
+            } else {
+                localStorage.removeItem('gemini_api_key');
+            }
+            updateApiKeyStatus();
+            toggleApiKeyModal();
+        }
 
         // 키 누름 처리 (Enter 키 동작 매핑)
         function handleKeyPress(event) {
@@ -900,6 +972,14 @@
             const submitBtn = document.getElementById('aiSubmitBtn');
             const btnText = document.getElementById('aiBtnText');
 
+            // API 키가 보존되어 있는지 확인
+            const apiKey = localStorage.getItem('gemini_api_key');
+            if (!apiKey || apiKey.trim() === "") {
+                displayError("사전 사용을 위해서는 Gemini API 키가 설정되어야 합니다. 우측 상단의 'API 키 미설정' 버튼을 클릭하여 발급받은 키를 등록해 주세요.");
+                inputField.focus();
+                return;
+            }
+
             // UI 상태를 즉시 전이 (로딩 중 및 중지 가능 상태 활성화)
             isSearching = true;
             viewport.classList.remove('active');
@@ -914,9 +994,8 @@
             // 새로운 AbortController 인스턴스 생성
             currentAbortController = new AbortController();
 
-            // Canvas runtime에서 API 키를 자동으로 제공하므로 빈 값 유지
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            // 안정적이고 범용성이 높은 gemini-1.5-flash 정식 모델 호출 주소 매핑
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
             // API 호출 전송 본문 생성 (극도로 빠르고 가벼운 요약형 사전 프롬프트 설정)
             const payload = {
@@ -928,12 +1007,12 @@
                 }
             };
 
-            // 지수 백오프 기반 에러 복원력을 위한 API 호출 실행 루프
-            let retries = 3;
+            // 네트워크 오류 및 한도 극복을 위한 비동기 처리 루프
+            let retries = 2;
             let delay = 1000;
             let response = null;
 
-            while (retries > 0) {
+            while (retries >= 0) {
                 try {
                     response = await fetch(apiUrl, {
                         method: 'POST',
@@ -945,8 +1024,9 @@
                     if (response.ok) {
                         break; // 성공 시 루프 탈출
                     } else {
-                        // Response가 성공이 아닐 때 에러를 강제 발생시켜 무한 루프 진입 원천 봉쇄
-                        throw new Error(`API Error Status: ${response.status}`);
+                        const errorResponse = await response.json().catch(() => ({}));
+                        const googleErrorMsg = errorResponse.error?.message || `API Error (Status: ${response.status})`;
+                        throw new Error(googleErrorMsg);
                     }
                 } catch (error) {
                     // 사용자가 의도적으로 '중지' 버튼을 누른 경우
@@ -956,13 +1036,13 @@
                         return;
                     }
 
-                    // 일반 네트워크 에러 또는 타임아웃 지수 백오프 처리
-                    retries--;
+                    // 재시도 횟수 차감 및 지수 백오프
                     if (retries === 0) {
-                        displayError("연결 오류가 지속되어 의미를 찾지 못했습니다. 서버 상태를 확인하거나 잠시 후 다시 시도해 주세요.");
+                        displayError(`검색에 실패했습니다: ${error.message || "연결 오류"}. 키가 올바른지 혹은 네트워크 상태를 확인 후 다시 시도해 주세요.`);
                         resetUIState();
                         return;
                     }
+                    retries--;
                     await new Promise(resolve => setTimeout(resolve, delay));
                     delay *= 2;
                 }
