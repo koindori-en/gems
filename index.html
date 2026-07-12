@@ -287,12 +287,12 @@
             overflow: hidden; /* 스크롤바 원천 제거 */
         }
 
-        /* ★ 제미나이 보카(Voca) 전용 슬림 & 미니멀 워크스페이스 클래스 */
+        /* ★ 네이버 사전 전용 슬림 & 미니멀 워크스페이스 클래스 (고급 다크 그린 테마 보강) */
         .ai-workspace-section {
             width: 100%;
-            background: rgba(10, 15, 30, 0.4);
+            background: rgba(4, 25, 18, 0.55); /* 은은하고 묵직한 딥 다크 포레스트 그린 백그라운드 */
             backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-top: 1px solid rgba(4, 120, 87, 0.25); /* 격조 높은 다크 그린 경계선 */
             padding: 16px 25px;
             display: flex;
             flex-direction: column;
@@ -305,29 +305,52 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06); 
-            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(4, 120, 87, 0.2); 
+            padding-bottom: 6px;
             margin-bottom: 2px;
         }
 
         .workspace-title {
-            color: #94a3b8; /* 차분하고 튀지 않는 실버 그레이 */
-            font-size: 12px;
-            font-weight: 600;
+            color: #059669; /* 한층 차분하고 고급스러운 미드 다크 그린 */
+            font-size: 13.5px;
+            font-weight: 700;
             letter-spacing: 2px;
             margin: 0;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 9px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        .workspace-title::before {
-            content: '📖';
-            font-size: 11px;
-            opacity: 0.8;
+        /* ★ 고급스럽고 부드럽게 연출된 천천히 움직이는 숨쉬는 아이콘 */
+        .breathing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #047857; /* 묵직하고 우아한 딥 다크 그린 */
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(4, 120, 87, 0.6);
+            /* 우아함을 극대화하기 위해 펄스 주기를 4초로 지연시키고 부드러운 ease-in-out 가속 적용 */
+            animation: pulse-green-slow 4s infinite ease-in-out;
+            display: inline-block;
+            flex-shrink: 0;
         }
 
-        /* 프리미엄 검색창 폼 (차분한 무채색 계열) */
+        @keyframes pulse-green-slow {
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(4, 120, 87, 0.5);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 0 10px rgba(4, 120, 87, 0);
+            }
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(4, 120, 87, 0);
+            }
+        }
+
+        /* 프리미엄 검색창 폼 (초록 테마 조화) */
         .search-container {
             display: flex;
             width: 100%;
@@ -337,8 +360,8 @@
 
         .search-input {
             flex-grow: 1;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(4, 120, 87, 0.15);
             border-radius: 6px;
             padding: 8px 14px;
             color: #e2e8f0;
@@ -350,126 +373,148 @@
         }
 
         .search-input:focus {
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(4, 120, 87, 0.4);
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4),
-                        0 0 8px rgba(255, 255, 255, 0.05);
-            background: rgba(0, 0, 0, 0.5);
+                        0 0 8px rgba(4, 120, 87, 0.15);
+            background: rgba(0, 0, 0, 0.55);
         }
 
-        /* 세련되었지만 전혀 튀지 않는 미니멀 단색 버튼 */
-        .search-submit-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #94a3b8;
-            font-weight: 500;
-            font-size: 12.5px;
-            padding: 0 16px;
+        /* ★ 단일 검색 전용 에메랄드 그린 버튼 -> 격조 높은 딥 다크 그린 리디자인 */
+        .search-action-btn.btn-search {
+            background: rgba(4, 120, 87, 0.12);
+            border: 1px solid rgba(4, 120, 87, 0.35);
+            color: #059669; /* 신뢰감을 주는 시각적 딥 그린 */
+            font-weight: 600;
+            font-size: 13px;
+            padding: 0 22px;
             border-radius: 6px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 4px;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
-        .search-submit-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #f1f5f9;
-            border-color: rgba(255, 255, 255, 0.15);
+        .search-action-btn.btn-search:hover {
+            background: rgba(4, 120, 87, 0.25);
+            border-color: rgba(4, 120, 87, 0.55);
+            color: #34d399; /* 마우스 호버시에만 화사한 라이트 에메랄드 전이 */
+            box-shadow: 0 0 12px rgba(4, 120, 87, 0.3);
         }
 
-        .search-submit-btn:active {
-            transform: scale(0.98);
+        .search-action-btn:active {
+            transform: scale(0.97);
         }
 
-        /* ★ 중지 상태일 때 표시될 차분한 딥 레드 톤 스타일 */
-        .search-submit-btn.cancel-mode {
-            background: rgba(239, 68, 68, 0.08);
-            border-color: rgba(239, 68, 68, 0.2);
-            color: #f87171;
-        }
-
-        .search-submit-btn.cancel-mode:hover {
-            background: rgba(239, 68, 68, 0.15);
-            border-color: rgba(239, 68, 68, 0.3);
-            color: #fca5a5;
-        }
-
-        /* 답변 결과 공간 */
+        /* 결과 노출 뷰포트 영역 */
         .answer-viewport {
             width: 100%;
-            background: rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(4, 120, 87, 0.08);
             border-radius: 6px;
-            padding: 10px 14px;
-            min-height: 40px;
-            max-height: 250px;
+            padding: 12px 16px;
+            min-height: 50px;
+            max-height: 320px;
             overflow-y: auto;
-            color: #64748b;
+            color: #cbd5e1;
             font-size: 12.5px;
             line-height: 1.5;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        /* 응답이 있는 활성 상태 */
-        .answer-viewport.active {
-            background: rgba(0, 0, 0, 0.35);
-            border-color: rgba(255, 255, 255, 0.04);
-            color: #cbd5e1;
+        /* 페이드인 애니메이션 */
+        .answer-content {
+            animation: fadeIn 0.3s ease forwards;
         }
 
-        /* 마크다운 형태 응답 스타일링 */
-        .answer-content h3 {
-            color: #e2e8f0;
-            margin: 8px 0 4px 0;
-            font-size: 13px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 2px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .answer-content strong {
-            color: #ffffff;
-            font-weight: 600;
+
+        /* 단어장 태그 칩 스타일 */
+        .voca-tag-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
         }
-        .answer-content p {
-            margin-bottom: 6px;
-        }
-        .answer-content ul {
-            margin-left: 14px;
-            margin-bottom: 6px;
-            list-style-type: circle;
-        }
-        .answer-content li {
-            margin-bottom: 3px;
-        }
-        .answer-content code {
-            background: rgba(255, 255, 255, 0.06);
-            color: #f1f5f9;
-            padding: 1px 4px;
-            border-radius: 3px;
-            font-family: monospace;
+
+        .voca-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            padding: 2px 8px;
             font-size: 11.5px;
-        }
-
-        /* 로더 애니메이션 (차분한 화이트 펄스) */
-        .ai-loader {
-            display: none;
+            color: #cbd5e1;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .voca-tag:hover {
+            background: rgba(4, 120, 87, 0.15);
+            border-color: rgba(4, 120, 87, 0.35);
+            color: #ffffff;
+        }
+
+        .voca-tag-delete {
+            color: #ef4444;
+            font-size: 10px;
+            display: inline-block;
+            cursor: pointer;
+            padding: 1px 3px;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+
+        .voca-tag-delete:hover {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .voca-clear-btn {
+            background: transparent;
+            border: none;
+            color: #64748b;
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-left: auto;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .voca-clear-btn:hover {
+            color: #f87171;
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        /* 로더 애니메이션 (차분한 그린 펄스) */
+        .ai-loader {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #059669;
             font-weight: 400;
         }
 
         .pulse-bubble {
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background-color: #94a3b8;
+            background-color: #059669;
             animation: bubble-bounce 1.4s infinite ease-in-out both;
         }
 
         .pulse-bubble-1 { animation-delay: -0.32s; }
         .pulse-bubble-2 { animation-delay: -0.16s; }
+        .pulse-bubble-3 { animation-delay: 0s; }
 
         @keyframes bubble-bounce {
             0%, 80%, 100% { transform: scale(0); }
@@ -575,10 +620,10 @@
                 gap: 8px;
             }
 
-            .search-submit-btn {
+            .search-action-btn.btn-search {
                 width: 100%;
-                justify-content: center;
                 height: 38px;
+                font-size: 13px;
             }
         }
     </style>
@@ -761,7 +806,7 @@
 
         </div>
 
-        <!-- ★ 전체 그리드 영역 하단에 분리 및 재구성한 프리미엄 'Gemini Gems' 섹션 (스크롤 제거 및 2열 가로 랩 구조) -->
+        <!-- ★ 전체 그리드 영역 하단에 분리 및 재구성한 프리미엄 'Gemini Gems' 섹션 -->
         <div class="gems-section">
             <div class="gems-header">
                 <h2 class="gems-title">Gemini Gems</h2>
@@ -783,321 +828,375 @@
             </div>
         </div>
 
-        <!-- ★ 차분하고 실용적인 미니멀 사전을 연상시키는 Gemini Voca 섹션 -->
+        <!-- ★ 네이버 사전 실시간 검색 및 단어장 통합 워크스페이스 -->
         <div class="ai-workspace-section">
             <div class="workspace-header">
-                <h2 class="workspace-title">Gemini Voca</h2>
-                <!-- 우측 상단 API 키 세팅 및 상태 버튼 -->
-                <button onclick="toggleApiKeyModal()" id="apiKeyStatusBtn" style="margin-left: auto; background: transparent; border: none; color: #64748b; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 4px; outline: none; padding: 2px 6px; border-radius: 4px; transition: background 0.2s;">
-                    <span id="apiKeyDot" style="width: 6px; height: 6px; border-radius: 50%; background-color: #ef4444; display: inline-block;"></span>
-                    <span id="apiKeyText" style="font-weight: 500;">API 키 미설정 (클릭)</span>
-                </button>
+                <h2 class="workspace-title">
+                    <span class="breathing-dot"></span>
+                    네이버 사전
+                </h2>
             </div>
             
-            <!-- 검색 질의 폼 -->
+            <!-- 단일 검색 폼 구성 (고급 다크 그린 테마 버튼 연동) -->
             <div class="search-container">
-                <input type="text" class="search-input" id="aiQueryInput" placeholder="단어, 숙어 또는 원어를 입력하세요... (Enter 입력)" onkeypress="handleKeyPress(event)">
-                <button class="search-submit-btn" id="aiSubmitBtn" onclick="handleSearchClick()">
-                    <span id="aiBtnText">검색</span>
+                <input type="text" class="search-input" id="vocaQueryInput" placeholder="검색할 영단어, 한글 뜻, 또는 문장을 입력하세요... (Enter)" onkeypress="handleKeyPress(event)">
+                <button class="search-action-btn btn-search" onclick="searchWord()">
+                    <span>검색</span>
                 </button>
             </div>
 
-            <!-- 로딩 상태바 -->
-            <div class="ai-loader" id="aiLoader">
-                <div class="pulse-bubble pulse-bubble-1"></div>
-                <div class="pulse-bubble pulse-bubble-2"></div>
-                <div class="pulse-bubble pulse-bubble-3"></div>
-                <span style="font-size: 11.5px; margin-left: 4px;">의미 분석 중...</span>
-            </div>
-
-            <!-- 답변 출력 공간 -->
-            <div class="answer-viewport" id="aiAnswerViewport">
-                영어 또는 외국어 단어를 입력하면 즉시 가장 명료한 한국어 뜻과 예문이 제시됩니다. (사용 전 우측 상단의 API 키 설정을 완료해 주세요.)
+            <!-- 단어장 & 실시간 검색 결과 통합 출력 공간 -->
+            <div class="answer-viewport active" id="vocaAnswerViewport">
+                <!-- 자바스크립트로 검색 결과 및 최근 검색어가 여기에 동적으로 들어갑니다. -->
             </div>
         </div>
 
-    </div>
-
-    <!-- API Key 설정 단정 모달 -->
-    <div id="apiKeyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; padding: 20px;">
-        <div style="background: #111827; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; max-width: 400px; width: 100%; padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.8);">
-            <h3 style="color: #e2e8f0; font-size: 15px; margin-bottom: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px;">🔑 Gemini API 키 설정</h3>
-            <p style="color: #94a3b8; font-size: 12px; line-height: 1.6; margin-bottom: 16px;">
-                Gemini Voca 사전을 사용하려면 구글 AI Studio에서 무료로 발급받은 API 키가 필요합니다. 입력된 키는 브라우저 내부(localStorage)에만 안전하게 저장됩니다.
-            </p>
-            <input type="password" id="apiKeyInput" placeholder="AIzaSy..." style="width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 6px; padding: 8px 12px; color: #f1f5f9; font-size: 13px; outline: none; margin-bottom: 16px;">
-            <div style="display: flex; gap: 8px; justify-content: flex-end;">
-                <button onclick="toggleApiKeyModal()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #94a3b8; font-size: 12px; padding: 6px 12px; border-radius: 6px; cursor: pointer;">취소</button>
-                <button onclick="saveApiKey()" style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 12px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 500;">저장</button>
-            </div>
-        </div>
     </div>
 
     <script>
-        // 전역 상태 제어 변수 및 네트워크 중단 컨트롤러 선언
-        let isSearching = false;
-        let currentAbortController = null;
+        // 최근 단어 히스토리를 저장할 변수 (localStorage 로딩)
+        let recentWords = [];
 
-        // 웹페이지 초기화 시 API Key 체크
+        // 웹페이지 초기화 시 단어장 복원 및 기본 데이터 렌더링
         window.addEventListener('DOMContentLoaded', () => {
-            updateApiKeyStatus();
+            loadRecentWords();
+            renderRecentWords();
         });
 
-        // API 키 로컬 상태 업데이트
-        function updateApiKeyStatus() {
-            const apiKey = localStorage.getItem('gemini_api_key');
-            const dot = document.getElementById('apiKeyDot');
-            const text = document.getElementById('apiKeyText');
-            const modalInput = document.getElementById('apiKeyInput');
-            
-            if (apiKey && apiKey.trim() !== "") {
-                dot.style.backgroundColor = '#22c55e'; // 초록색
-                text.innerText = "API 키 저장됨";
-                text.style.color = '#94a3b8';
-                if (modalInput) modalInput.value = apiKey;
-            } else {
-                dot.style.backgroundColor = '#ef4444'; // 빨간색
-                text.innerText = "API 키 미설정 (클릭)";
-                text.style.color = '#f87171';
-                if (modalInput) modalInput.value = "";
-            }
-        }
-
-        // 모달 열고 닫기
-        function toggleApiKeyModal() {
-            const modal = document.getElementById('apiKeyModal');
-            if (modal.style.display === 'none' || modal.style.display === '') {
-                modal.style.display = 'flex';
-                const storedKey = localStorage.getItem('gemini_api_key');
-                if (storedKey) {
-                    document.getElementById('apiKeyInput').value = storedKey;
-                }
-                document.getElementById('apiKeyInput').focus();
-            } else {
-                modal.style.display = 'none';
-            }
-        }
-
-        // API 키 로컬 보존
-        function saveApiKey() {
-            const keyInput = document.getElementById('apiKeyInput').value.trim();
-            if (keyInput) {
-                localStorage.setItem('gemini_api_key', keyInput);
-            } else {
-                localStorage.removeItem('gemini_api_key');
-            }
-            updateApiKeyStatus();
-            toggleApiKeyModal();
-        }
-
-        // 키 누름 처리 (Enter 키 동작 매핑)
+        // 엔터키 처리
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
-                handleSearchClick();
+                searchWord();
             }
         }
 
-        // 검색 버튼 통합 제어 핸들러 (상태에 따라 검색 시작 또는 중지 처리)
-        function handleSearchClick() {
-            if (isSearching) {
-                cancelAIQuestion();
-            } else {
-                submitAIQuestion();
-            }
-        }
-
-        // 마크다운 원시 텍스트를 아름다운 HTML로 보정해주는 미니 포맷터
-        function parseMarkdown(text) {
-            if (!text) return "";
-            
-            // 안전한 텍스트로 치환 및 개행 보정
-            let html = text
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;");
-
-            // 볼드체 치환 (**text** -> <strong>text</strong>)
-            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-            // 코드 블록 치환 (`code` -> <code>code</code>)
-            html = html.replace(/`(.*?)`/g, '<code>$1</code>');
-
-            // 헤더 형식 변형 (### text -> <h3>text</h3>)
-            html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
-            html = html.replace(/^## (.*?)$/gm, '<h3>$1</h3>');
-
-            // 리스트 파싱 및 복원 (- item -> <li>item</li>)
-            let lines = html.split('\n');
-            let insideList = false;
-            let resultLines = [];
-
-            for (let i = 0; i < lines.length; i++) {
-                let line = lines[i].trim();
-                if (line.startsWith('- ') || line.startsWith('* ')) {
-                    if (!insideList) {
-                        resultLines.push('<ul>');
-                        insideList = true;
-                    }
-                    resultLines.push(`<li>${line.substring(2)}</li>`);
-                } else {
-                    if (insideList) {
-                        resultLines.push('</ul>');
-                        insideList = false;
-                    }
-                    resultLines.push(lines[i]);
-                }
-            }
-            if (insideList) {
-                resultLines.push('</ul>');
-            }
-
-            return resultLines.join('\n').replace(/\n/g, '<br>');
-        }
-
-        // API 호출 즉시 중단(취소) 핵심 로직
-        function cancelAIQuestion() {
-            if (currentAbortController) {
-                currentAbortController.abort();
-            }
-        }
-
-        // 제미나이 API 호출 비동기 핵심 로직
-        async function submitAIQuestion() {
-            const inputField = document.getElementById('aiQueryInput');
+        // 검색 처리 핵심 메소드 (외부 API 연동으로 에러 없는 실시간 번역 + 영단어 정밀 조회)
+        async function searchWord() {
+            const inputField = document.getElementById('vocaQueryInput');
             const query = inputField.value.trim();
-            if (!query) return;
-
-            const viewport = document.getElementById('aiAnswerViewport');
-            const loader = document.getElementById('aiLoader');
-            const submitBtn = document.getElementById('aiSubmitBtn');
-            const btnText = document.getElementById('aiBtnText');
-
-            // API 키가 보존되어 있는지 확인
-            const apiKey = localStorage.getItem('gemini_api_key');
-            if (!apiKey || apiKey.trim() === "") {
-                displayError("사전 사용을 위해서는 Gemini API 키가 설정되어야 합니다. 우측 상단의 'API 키 미설정' 버튼을 클릭하여 발급받은 키를 등록해 주세요.");
+            
+            if (!query) {
                 inputField.focus();
                 return;
             }
 
-            // UI 상태를 즉시 전이 (로딩 중 및 중지 가능 상태 활성화)
-            isSearching = true;
-            viewport.classList.remove('active');
-            viewport.innerHTML = "조회 중...";
-            loader.style.display = 'flex';
-            inputField.disabled = true;
+            // 단어장에 우선 기록 및 로컬 보존
+            addWordToStorage(query);
 
-            // 버튼을 [중지] 상태 스타일로 즉시 변경
-            submitBtn.classList.add('cancel-mode');
-            btnText.innerText = "중지";
+            const viewport = document.getElementById('vocaAnswerViewport');
 
-            // 새로운 AbortController 인스턴스 생성
-            currentAbortController = new AbortController();
+            // 1단계: 로딩 스피너 작동
+            viewport.innerHTML = `
+                <div class="ai-loader" style="display: flex; align-items: center; justify-content: center; min-height: 80px; gap: 8px; width:100%;">
+                    <div class="pulse-bubble pulse-bubble-1"></div>
+                    <div class="pulse-bubble pulse-bubble-2"></div>
+                    <div class="pulse-bubble pulse-bubble-3"></div>
+                    <span style="font-size: 13px; color: #059669; font-weight: 500; margin-left: 4px;">사전 정보 검색 중...</span>
+                </div>
+            `;
 
-            // 안정적이고 범용성이 높은 gemini-1.5-flash 정식 모델 호출 주소 매핑
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+            try {
+                // 한글 여부 확인
+                const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(query);
+                const targetLang = isKorean ? 'en' : 'ko';
 
-            // API 호출 전송 본문 생성 (극도로 빠르고 가벼운 요약형 사전 프롬프트 설정)
-            const payload = {
-                contents: [{
-                    parts: [{ text: query }]
-                }],
-                systemInstruction: {
-                    parts: [{ text: "당신은 극도로 빠르고 군더더기 없는 한국어 사전 및 외래어/원어 분석 비서입니다. 입력된 외국어 단어, 숙어, 문장의 한국어 뜻을 가장 간결하고 명확하게 사전에 등록된 레이아웃으로 출력하십시오. 친절한 서론, 인사말, 종결어미 등의 부가적인 문장은 절대로 생략하십시오. 속도가 생명이므로, 즉시 아래 형식을 엄수해 답변하십시오: ### [입력 단어/원어]\n- **한국어 핵심 뜻**: [핵심 뜻 정리]\n- **품사**: [품사 분류]\n- **예문**: [짧고 유용한 원어 예문 하나] (해석)" }]
+                // 구글 gtx 엔진을 통한 정밀 실시간 번역 API 호출 (검색어 자체의 일차적 대역어 확보)
+                const translateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(query)}`;
+                const translateRes = await fetch(translateUrl);
+                const translateData = await translateRes.json();
+                const translationText = translateData[0].map(item => item[0]).join('');
+
+                // 영문 추출 (사전용)
+                let englishWord = isKorean ? translationText.trim().split(' ')[0] : query;
+                englishWord = englishWord.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+
+                let dictHtml = '';
+
+                // 영어 철자가 포함된 경우 무료 사전 API(Wiktionary 기반) 추가 조회하여 디테일 향상
+                if (/^[a-zA-Z\s\-]+$/.test(englishWord)) {
+                    try {
+                        const dictUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(englishWord.toLowerCase())}`;
+                        const dictRes = await fetch(dictUrl);
+                        if (dictRes.ok) {
+                            const dictData = await dictRes.json();
+                            const entry = dictData[0];
+                            const phonetic = entry.phonetic || (entry.phonetics && entry.phonetics.find(p => p.text)?.text) || '';
+                            const audioUrl = entry.phonetics && entry.phonetics.find(p => p.audio && p.audio !== '')?.audio || '';
+
+                            // 영문 의미 및 예문들을 하나로 묶어 다국어 한국어 일괄 번역 수행
+                            let itemsToTranslate = [];
+                            entry.meanings.slice(0, 2).forEach(meaning => {
+                                meaning.definitions.slice(0, 2).forEach(def => {
+                                    itemsToTranslate.push(`[DEF] ${def.definition}`);
+                                    if (def.example) {
+                                        itemsToTranslate.push(`[EX] ${def.example}`);
+                                    }
+                                });
+                            });
+
+                            let translatedDefinitionsMap = {};
+                            let translatedExamplesMap = {};
+
+                            if (itemsToTranslate.length > 0) {
+                                // 의미와 예문 묶음을 [BREAK] 구분자로 연결하여 1회에 번역 요청 (네트워크 지연 최소화)
+                                const combinedText = itemsToTranslate.join(" [BREAK] ");
+                                const dictTranslateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q=${encodeURIComponent(combinedText)}`;
+                                const dictTranslateRes = await fetch(dictTranslateUrl);
+                                const dictTranslateData = await dictTranslateRes.json();
+                                const dictTranslatedCombined = dictTranslateData[0].map(item => item[0]).join('');
+
+                                // 번역 결과 파싱 및 디코딩
+                                const translatedItems = dictTranslatedCombined.split(/\s*\[BREAK\]\s*/i);
+                                
+                                let translationIndex = 0;
+                                entry.meanings.slice(0, 2).forEach(meaning => {
+                                    meaning.definitions.slice(0, 2).forEach(def => {
+                                        // 원본 영문 정의를 키값으로 맵에 매핑
+                                        const rawDef = def.definition;
+                                        let cleanDefTranslation = translatedItems[translationIndex] || '';
+                                        // 번역기 특성상 접두어가 소폭 왜곡된 것 정제
+                                        cleanDefTranslation = cleanDefTranslation.replace(/^\[?DEF\]?\s*/i, '').trim();
+                                        translatedDefinitionsMap[rawDef] = cleanDefTranslation;
+                                        translationIndex++;
+
+                                        if (def.example) {
+                                            const rawEx = def.example;
+                                            let cleanExTranslation = translatedItems[translationIndex] || '';
+                                            cleanExTranslation = cleanExTranslation.replace(/^\[?EX\]?\s*/i, '').trim();
+                                            translatedExamplesMap[rawEx] = cleanExTranslation;
+                                            translationIndex++;
+                                        }
+                                    });
+                                });
+                            }
+
+                            // 한국어 기반 결과 카드 생성
+                            dictHtml += `
+                                <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(4, 120, 87, 0.15);">
+                                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                        <span style="font-size: 15px; font-weight: 700; color: #ffffff;">${entry.word}</span>
+                                        ${phonetic ? `<span style="font-size: 11px; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 1px 6px; border-radius: 4px;">${phonetic}</span>` : ''}
+                                        ${audioUrl ? `
+                                            <button onclick="new Audio('${audioUrl}').play()" style="background: rgba(4, 120, 87, 0.15); border: 1px solid rgba(4, 120, 87, 0.3); color: #34d399; font-size: 10.5px; padding: 2px 8px; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s;">
+                                                🔊 발음 듣기
+                                            </button>
+                                        ` : ''}
+                                    </div>
+                            `;
+
+                            // 뜻 풀이 데이터 추출 (영어를 모두 한국어로 전치 완료)
+                            entry.meanings.slice(0, 2).forEach(meaning => {
+                                // 품사 한글 맵핑 유틸리티
+                                let partOfSpeechKr = meaning.partOfSpeech;
+                                if (partOfSpeechKr === 'noun') partOfSpeechKr = '명사';
+                                else if (partOfSpeechKr === 'verb') partOfSpeechKr = '동사';
+                                else if (partOfSpeechKr === 'adjective') partOfSpeechKr = '형용사';
+                                else if (partOfSpeechKr === 'adverb') partOfSpeechKr = '부사';
+                                else if (partOfSpeechKr === 'pronoun') partOfSpeechKr = '대명사';
+                                else if (partOfSpeechKr === 'preposition') partOfSpeechKr = '전치사';
+                                else if (partOfSpeechKr === 'conjunction') partOfSpeechKr = '접속사';
+
+                                dictHtml += `
+                                    <div style="margin-top: 8px;">
+                                        <span style="font-size: 10px; font-weight: 600; color: #34d399; background: rgba(4, 120, 87, 0.15); padding: 1px 5px; border-radius: 3px; text-transform: uppercase;">${partOfSpeechKr}</span>
+                                        <ul style="margin: 4px 0 0 14px; list-style-type: decimal; color: #cbd5e1; font-size: 12px;">
+                                `;
+                                meaning.definitions.slice(0, 2).forEach(def => {
+                                    const translatedDef = translatedDefinitionsMap[def.definition] || def.definition;
+                                    const translatedEx = def.example ? (translatedExamplesMap[def.example] || '') : '';
+
+                                    dictHtml += `
+                                        <li style="margin-bottom: 3.5px; line-height: 1.45;">
+                                            <div style="color: #ffffff;">${translatedDef}</div>
+                                            ${def.example ? `
+                                                <div style="font-size: 11px; color: #94a3b8; font-style: italic; margin-top: 1px; display:flex; flex-direction:column; gap:1px; padding-left: 4px; border-left: 2px solid rgba(4, 120, 87, 0.2);">
+                                                    <span style="color: #cbd5e1;">Ex: "${def.example}"</span>
+                                                    <span style="color: #84cc16; font-size: 10.5px;">뜻: ${translatedEx}</span>
+                                                </div>
+                                            ` : ''}
+                                        </li>
+                                    `;
+                                });
+                                dictHtml += `</ul></div>`;
+                            });
+
+                            dictHtml += `</div>`;
+                        }
+                    } catch (e) {
+                        console.log("English dictionary lookup not found", e);
+                    }
                 }
-            };
 
-            // 네트워크 오류 및 한도 극복을 위한 비동기 처리 루프
-            let retries = 2;
-            let delay = 1000;
-            let response = null;
+                // 웹페이지 내부 시각화 화면 구성
+                let resultHtml = `
+                    <div class="answer-content">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(4, 120, 87, 0.15); padding-bottom: 8px; margin-bottom: 6px;">
+                            <div>
+                                <span style="font-size: 10px; color: #059669; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">검색어</span>
+                                <h3 style="margin: 1px 0 0 0; font-size: 16px; color: #ffffff; font-weight: 700;">${escapeHtml(query)}</h3>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="font-size: 10px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">번역 및 대역어</span>
+                                <div style="font-size: 14px; font-weight: 700; color: #059669; margin-top: 1px;">${escapeHtml(translationText)}</div>
+                            </div>
+                        </div>
+                        ${dictHtml}
+                        
+                        <!-- 결과 영역 바로 아래에 최근 검색어 목록 삽입하여 접근성 극대화 -->
+                        <div id="resultRecentWordsSection" style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);">
+                        </div>
+                    </div>
+                `;
 
-            while (retries >= 0) {
-                try {
-                    response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload),
-                        signal: currentAbortController.signal // Abort 신호 연결
-                    });
+                viewport.innerHTML = resultHtml;
+                renderRecentWordsInResult(); // 결과창 내부 히스토리 업데이트
 
-                    if (response.ok) {
-                        break; // 성공 시 루프 탈출
-                    } else {
-                        const errorResponse = await response.json().catch(() => ({}));
-                        const googleErrorMsg = errorResponse.error?.message || `API Error (Status: ${response.status})`;
-                        throw new Error(googleErrorMsg);
-                    }
-                } catch (error) {
-                    // 사용자가 의도적으로 '중지' 버튼을 누른 경우
-                    if (error.name === 'AbortError') {
-                        displayError("사용자에 의해 검색 작업이 취소되었습니다.");
-                        resetUIState();
-                        return;
-                    }
-
-                    // 재시도 횟수 차감 및 지수 백오프
-                    if (retries === 0) {
-                        displayError(`검색에 실패했습니다: ${error.message || "연결 오류"}. 키가 올바른지 혹은 네트워크 상태를 확인 후 다시 시도해 주세요.`);
-                        resetUIState();
-                        return;
-                    }
-                    retries--;
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
-                }
+            } catch (err) {
+                console.error(err);
+                viewport.innerHTML = `
+                    <div style="color: #ef4444; font-size: 12px; padding: 10px; text-align: center;">
+                        ⚠️ 검색 중 일시적인 지연이 발생했습니다. 검색어 확인 후 다시 입력해주세요.
+                    </div>
+                `;
             }
 
-            // 응답 유효성 및 파싱 단계
-            if (response && response.ok) {
-                try {
-                    const result = await response.json();
-                    const candidate = result.candidates?.[0];
-                    const replyText = candidate?.content?.parts?.[0]?.text;
-
-                    if (replyText) {
-                        // 결과 표시 전처리
-                        viewport.classList.add('active');
-                        viewport.innerHTML = `<div class="answer-content">${parseMarkdown(replyText)}</div>`;
-                    } else {
-                        displayError("사전 데이터 조회 중 빈 결과가 반환되었습니다.");
-                    }
-                } catch (parseErr) {
-                    displayError("사전 정보 처리 중 예기치 못한 내부 이상이 발생했습니다.");
-                }
-            } else {
-                displayError("사전 서버 응답 지연으로 뜻을 도출하지 못했습니다.");
-            }
-
-            resetUIState();
-        }
-
-        // 에러 표시를 위한 전용 디렉션 메소드 (alert 배제)
-        function displayError(message) {
-            const viewport = document.getElementById('aiAnswerViewport');
-            viewport.classList.add('active');
-            viewport.innerHTML = `<div style="color: #ef4444; font-weight: 500;">⚠️ ${message}</div>`;
-        }
-
-        // 로딩 완료 후 UI 입력 상태 원복
-        function resetUIState() {
-            const inputField = document.getElementById('aiQueryInput');
-            const loader = document.getElementById('aiLoader');
-            const submitBtn = document.getElementById('aiSubmitBtn');
-            const btnText = document.getElementById('aiBtnText');
-
-            // 상태값 및 컨트롤러 초기화
-            isSearching = false;
-            currentAbortController = null;
-
-            loader.style.display = 'none';
-            inputField.disabled = false;
-            
-            // 버튼 디자인 원복
-            submitBtn.classList.remove('cancel-mode');
-            btnText.innerText = "검색";
-
+            // 입력 필드 초기화 및 포커스 복원
+            inputField.value = '';
             inputField.focus();
+        }
+
+        // localStorage에서 최근 검색 단어 로드
+        function loadRecentWords() {
+            try {
+                const saved = localStorage.getItem('voca_recent_searches');
+                if (saved) {
+                    recentWords = JSON.parse(saved);
+                }
+            } catch (e) {
+                console.error("단어장을 불러오는 중 에러 발생: ", e);
+                recentWords = [];
+            }
+        }
+
+        // 단어 저장 로직 (최대 15개 유지 및 중복 단어 제거 처리)
+        function addWordToStorage(word) {
+            recentWords = recentWords.filter(w => w.toLowerCase() !== word.toLowerCase());
+            recentWords.unshift(word);
+
+            if (recentWords.length > 15) {
+                recentWords = recentWords.slice(0, 15);
+            }
+
+            localStorage.setItem('voca_recent_searches', JSON.stringify(recentWords));
+        }
+
+        // 특정 단어만 삭제
+        function deleteWord(index, event) {
+            if (event) event.stopPropagation(); // 부모 칩 클릭 이벤트 차단
+            recentWords.splice(index, 1);
+            localStorage.setItem('voca_recent_searches', JSON.stringify(recentWords));
+            
+            // 현재 활성 뷰 확인 후 알맞은 히스토리 다시 그리기
+            const recentSec = document.getElementById('resultRecentWordsSection');
+            if (recentSec) {
+                renderRecentWordsInResult();
+            } else {
+                renderRecentWords();
+            }
+        }
+
+        // 단어장 전체 비우기
+        function clearAllWords() {
+            recentWords = [];
+            localStorage.removeItem('voca_recent_searches');
+            
+            const recentSec = document.getElementById('resultRecentWordsSection');
+            if (recentSec) {
+                renderRecentWordsInResult();
+            } else {
+                renderRecentWords();
+            }
+        }
+
+        // 단어장 타일을 눌렀을 때 네이버 사전으로 바로 검색하는 숏컷
+        function searchDirectly(word) {
+            document.getElementById('vocaQueryInput').value = word;
+            searchWord();
+        }
+
+        // 초기 대기 상태 화면 렌더링
+        function renderRecentWords() {
+            const viewport = document.getElementById('vocaAnswerViewport');
+            
+            if (recentWords.length === 0) {
+                viewport.innerHTML = `
+                    <div style="color: #64748b; font-size: 12px; display: flex; align-items: center; justify-content: center; min-height: 24px; width: 100%;">
+                        최근 검색한 단어가 없습니다. 위 검색창에 학습하려는 영단어나 예문을 검색해 보세요!
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 4px;">
+                    <span style="color: #94a3b8; font-weight: 600; font-size: 11px;">최근 검색어 (클릭 시 재검색)</span>
+                    <button class="voca-clear-btn" onclick="clearAllWords()">전체 삭제</button>
+                </div>
+                <div class="voca-tag-wrapper">
+            `;
+
+            recentWords.forEach((word, index) => {
+                html += `
+                    <span class="voca-tag" onclick="searchDirectly('${word.replace(/'/g, "\\'")}')">
+                        <span>${escapeHtml(word)}</span>
+                        <span class="voca-tag-delete" onclick="deleteWord(${index}, event)">✕</span>
+                    </span>
+                `;
+            });
+
+            html += `</div>`;
+            viewport.innerHTML = html;
+        }
+
+        // 결과화면용 하단 최근 검색어 컴포넌트 렌더링
+        function renderRecentWordsInResult() {
+            const section = document.getElementById('resultRecentWordsSection');
+            if (!section) return;
+
+            if (recentWords.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+
+            let html = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="color: #94a3b8; font-weight: 600; font-size: 10.5px;">최근 검색어</span>
+                    <button class="voca-clear-btn" onclick="clearAllWords()" style="font-size: 10px;">전체 삭제</button>
+                </div>
+                <div class="voca-tag-wrapper">
+            `;
+
+            recentWords.forEach((word, index) => {
+                html += `
+                    <span class="voca-tag" onclick="searchDirectly('${word.replace(/'/g, "\\'")}')" style="padding: 1px 6px; font-size: 11px;">
+                        <span>${escapeHtml(word)}</span>
+                        <span class="voca-tag-delete" onclick="deleteWord(${index}, event)" style="font-size: 8.5px; padding: 0 2px;">✕</span>
+                    </span>
+                `;
+            });
+
+            html += `</div>`;
+            section.innerHTML = html;
+        }
+
+        // XSS 차단을 위한 보안 엔티티 치환 헬퍼 함수
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
     </script>
 
