@@ -290,7 +290,7 @@
         /* ★ 네이버 사전 전용 슬림 & 미니멀 워크스페이스 클래스 (고급 다크 그린 테마 보강) */
         .ai-workspace-section {
             width: 100%;
-            background: rgba(4, 25, 18, 0.55); /* 은은하고 묵직한 딥 다크 포레스트 그린 백그라운드 */
+            background: rgba(4, 20, 15, 0.65); /* 은은하고 묵직한 딥 다크 포레스트 그린 백그라운드 */
             backdrop-filter: blur(12px);
             border-top: 1px solid rgba(4, 120, 87, 0.25); /* 격조 높은 다크 그린 경계선 */
             padding: 16px 25px;
@@ -359,8 +359,8 @@
 
         .search-input {
             flex-grow: 1;
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(4, 120, 87, 0.15);
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(4, 120, 87, 0.2);
             border-radius: 6px;
             padding: 8px 14px;
             color: #e2e8f0;
@@ -368,23 +368,23 @@
             font-size: 13px;
             outline: none;
             transition: all 0.25s ease;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .search-input:focus {
-            border-color: rgba(4, 120, 87, 0.4);
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4),
-                        0 0 8px rgba(4, 120, 87, 0.15);
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5),
+                        0 0 8px rgba(16, 185, 129, 0.1);
             background: rgba(0, 0, 0, 0.55);
         }
 
-        /* ★ 단일 검색 전용 에메랄드 그린 버튼 -> 격조 높은 프리미엄 딥 다크 그린 리디자인 */
+        /* ★ 리디자인: 컴팩트하고 눈부시지 않으며 고급스러운 슬림 디자인 + 마우스 오버 시 완벽한 음각 표현 */
         .search-action-btn.btn-search {
-            background: linear-gradient(135deg, rgba(6, 78, 59, 0.7) 0%, rgba(4, 120, 87, 0.5) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            color: #a7f3d0; /* 부드럽고 가독성 높은 박하색 계열 */
-            font-weight: 600;
-            font-size: 13px;
+            background: rgba(6, 78, 59, 0.2); /* 눈부시지 않는 딥 포레스트 아웃라인 매트 스타일 */
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #a7f3d0; /* 가독성 높고 은은한 그린 텍스트 */
+            font-weight: 500;
+            font-size: 12.5px;
             padding: 0 24px;
             border-radius: 6px;
             cursor: pointer;
@@ -392,34 +392,40 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* 모션 정밀 바운스 제거, 묵직하고 리얼한 햅틱 전환 */
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
             white-space: nowrap;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
         }
 
+        /* 마우스 오버(Hover) 시 물리적인 느낌의 음각(Engraved)과 안쪽 침하 효과 */
         .search-action-btn.btn-search:hover {
-            background: linear-gradient(135deg, rgba(4, 120, 87, 0.85) 0%, rgba(16, 185, 129, 0.65) 100%);
-            border-color: rgba(52, 211, 153, 0.5);
-            color: #ffffff;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.35), 0 4px 20px rgba(0, 0, 0, 0.4);
-            transform: translateY(-1px);
+            background-color: rgba(4, 15, 10, 0.8) !important; /* 안쪽으로 어둡고 투명하게 빠지는 각인부 */
+            border-color: rgba(16, 185, 129, 0.15) !important; /* 튀지 않게 죽여주는 경계선 */
+            color: #10b981 !important; /* 시인성만 보장하는 진한 그린 */
+            transform: translateY(1.5px) !important; /* 미세하게 눌리는 기계식 키 느낌 연출 */
+            /* 다중 안쪽 이너 섀도우를 통해 내부를 깊숙히 깎아서 새겨놓은 정밀 정통 음각 묘사 */
+            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.95), 
+                        inset 0 1px 3px rgba(0, 0, 0, 0.8), 
+                        0 1px 0 rgba(255, 255, 255, 0.03) !important;
         }
 
-        .search-action-btn:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        .search-action-btn.btn-search:active {
+            transform: translateY(2.5px) !important;
+            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.98) !important;
         }
 
         /* 결과 노출 뷰포트 영역 */
         .answer-viewport {
             width: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(4, 120, 87, 0.08);
             border-radius: 6px;
             padding: 12px 16px;
             min-height: 50px;
-            max-height: 320px;
+            max-height: 380px; /* 유의어/반의어 확장에 대비해 세로 높이 임계치 약간 완화 */
             overflow-y: auto;
             color: #cbd5e1;
             font-size: 12.5px;
@@ -627,6 +633,7 @@
                 width: 100%;
                 height: 38px;
                 font-size: 13px;
+                transform: none !important; /* 모바일 탭 오버 시 무의미한 음각 변형 배제 */
             }
         }
     </style>
@@ -840,7 +847,7 @@
                 </h2>
             </div>
             
-            <!-- 단일 검색 폼 구성 (고급 다크 그린 테마 버튼 연동) -->
+            <!-- 단일 검색 폼 구성 (음각 효과 리디자인 버튼 연동) -->
             <div class="search-container">
                 <input type="text" class="search-input" id="vocaQueryInput" placeholder="검색할 영단어, 한글 뜻, 또는 문장을 입력하세요... (Enter)" onkeypress="handleKeyPress(event)">
                 <button class="search-action-btn btn-search" onclick="searchWord()">
@@ -873,7 +880,7 @@
             }
         }
 
-        // 검색 처리 핵심 메소드 (외부 API 연동으로 에러 없는 실시간 번역 + 영단어 정밀 조회)
+        // 검색 처리 핵심 메소드 (외부 API 연동으로 에러 없는 실시간 번역 + 영단어 정밀 조회 및 유의어/반의어 수집)
         async function searchWord() {
             const inputField = document.getElementById('vocaQueryInput');
             const query = inputField.value.trim();
@@ -914,6 +921,8 @@
                 englishWord = englishWord.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
 
                 let dictHtml = '';
+                let synonymsList = [];
+                let antonymsList = [];
 
                 // 영어 철자가 포함된 경우 무료 사전 API(Wiktionary 기반) 추가 조회하여 디테일 향상
                 if (/^[a-zA-Z\s\-]+$/.test(englishWord)) {
@@ -926,7 +935,29 @@
                             const phonetic = entry.phonetic || (entry.phonetics && entry.phonetics.find(p => p.text)?.text) || '';
                             const audioUrl = entry.phonetics && entry.phonetics.find(p => p.audio && p.audio !== '')?.audio || '';
 
-                            // 영문 의미 및 예문들을 하나로 묶어 다국어 한국어 일괄 번역 수행
+                            // 유의어(Synonyms) 및 반의어(Antonyms) 수집 로직 통합 고도화
+                            entry.meanings.forEach(meaning => {
+                                if (meaning.synonyms && meaning.synonyms.length > 0) {
+                                    synonymsList.push(...meaning.synonyms);
+                                }
+                                if (meaning.antonyms && meaning.antonyms.length > 0) {
+                                    antonymsList.push(...meaning.antonyms);
+                                }
+                                meaning.definitions.forEach(def => {
+                                    if (def.synonyms && def.synonyms.length > 0) {
+                                        synonymsList.push(...def.synonyms);
+                                    }
+                                    if (def.antonyms && def.antonyms.length > 0) {
+                                        antonymsList.push(...def.antonyms);
+                                    }
+                                });
+                            });
+
+                            // 중복 제거 및 노출 개수 필터링
+                            synonymsList = [...new Set(synonymsList)].slice(0, 6);
+                            antonymsList = [...new Set(antonymsList)].slice(0, 6);
+
+                            // 영문 의미 및 예문들과 함께 유의어/반의어도 묶음으로 처리해 통합 한국어 번역 수행
                             let itemsToTranslate = [];
                             entry.meanings.slice(0, 2).forEach(meaning => {
                                 meaning.definitions.slice(0, 2).forEach(def => {
@@ -937,11 +968,26 @@
                                 });
                             });
 
+                            // 유의어 및 반의어 통합 번역 추가 등록
+                            let synIndexInTranslation = -1;
+                            let antIndexInTranslation = -1;
+
+                            if (synonymsList.length > 0) {
+                                itemsToTranslate.push(`[SYN] ${synonymsList.join(', ')}`);
+                                synIndexInTranslation = itemsToTranslate.length - 1;
+                            }
+                            if (antonymsList.length > 0) {
+                                itemsToTranslate.push(`[ANT] ${antonymsList.join(', ')}`);
+                                antIndexInTranslation = itemsToTranslate.length - 1;
+                            }
+
                             let translatedDefinitionsMap = {};
                             let translatedExamplesMap = {};
+                            let translatedSynonymsString = '';
+                            let translatedAntonymsString = '';
 
                             if (itemsToTranslate.length > 0) {
-                                // 의미와 예문 묶음을 [BREAK] 구분자로 연결하여 1회에 번역 요청 (네트워크 지연 최소화)
+                                // 의미, 예문, 유의어를 [BREAK] 구분자로 연결하여 1회에 일괄 번역 요청 (네트워크 지연 원천 최소화)
                                 const combinedText = itemsToTranslate.join(" [BREAK] ");
                                 const dictTranslateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q=${encodeURIComponent(combinedText)}`;
                                 const dictTranslateRes = await fetch(dictTranslateUrl);
@@ -971,6 +1017,14 @@
                                         }
                                     });
                                 });
+
+                                // 유의어 및 반의어 한국어 번역 결과 확보
+                                if (synIndexInTranslation !== -1 && translatedItems[synIndexInTranslation]) {
+                                    translatedSynonymsString = translatedItems[synIndexInTranslation].replace(/^\[?SYN\]?\s*/i, '').trim();
+                                }
+                                if (antIndexInTranslation !== -1 && translatedItems[antIndexInTranslation]) {
+                                    translatedAntonymsString = translatedItems[antIndexInTranslation].replace(/^\[?ANT\]?\s*/i, '').trim();
+                                }
                             }
 
                             // 한국어 기반 결과 카드 생성
@@ -1023,14 +1077,66 @@
                                 dictHtml += `</ul></div>`;
                             });
 
-                            dictHtml += `</div>`;
+                            // ★ 유의어 및 반의어 HTML 구조화 통합 고도화 (클릭 시 자가 동적 검색 연계)
+                            let saHtml = '';
+                            if (synonymsList.length > 0 || antonymsList.length > 0) {
+                                saHtml += `
+                                    <div style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(4, 120, 87, 0.15); display: flex; flex-direction: column; gap: 8px;">
+                                `;
+
+                                if (synonymsList.length > 0) {
+                                    saHtml += `
+                                        <div style="display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap;">
+                                            <span style="font-size: 10.5px; font-weight: 600; color: #34d399; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.2); padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">유의어</span>
+                                            <div style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;">
+                                    `;
+                                    synonymsList.forEach(syn => {
+                                        saHtml += `
+                                            <span class="voca-tag" style="font-size: 10.5px; padding: 1px 5px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);" onclick="searchDirectly('${syn.replace(/'/g, "\\'")}')">
+                                                ${escapeHtml(syn)}
+                                            </span>
+                                        `;
+                                    });
+                                    if (translatedSynonymsString) {
+                                        saHtml += `
+                                            <span style="font-size: 10.5px; color: #64748b; margin-left: 2px;">(${escapeHtml(translatedSynonymsString)})</span>
+                                        `;
+                                    }
+                                    saHtml += `</div></div>`;
+                                }
+
+                                if (antonymsList.length > 0) {
+                                    saHtml += `
+                                        <div style="display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap;">
+                                            <span style="font-size: 10.5px; font-weight: 600; color: #f87171; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.2); padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">반의어</span>
+                                            <div style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;">
+                                    `;
+                                    antonymsList.forEach(ant => {
+                                        saHtml += `
+                                            <span class="voca-tag" style="font-size: 10.5px; padding: 1px 5px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);" onclick="searchDirectly('${ant.replace(/'/g, "\\'")}')">
+                                                ${escapeHtml(ant)}
+                                            </span>
+                                        `;
+                                    });
+                                    if (translatedAntonymsString) {
+                                        saHtml += `
+                                            <span style="font-size: 10.5px; color: #64748b; margin-left: 2px;">(${escapeHtml(translatedAntonymsString)})</span>
+                                        `;
+                                    }
+                                    saHtml += `</div></div>`;
+                                }
+
+                                saHtml += `</div>`;
+                            }
+
+                            dictHtml += saHtml + `</div>`;
                         }
                     } catch (e) {
                         console.log("English dictionary lookup not found", e);
                     }
                 }
 
-                // 웹페이지 내부 시각화 화면 구성 ("검색어" 및 하단 "최근 검색어" 항목 제거)
+                // 웹페이지 내부 시각화 화면 구성
                 let resultHtml = `
                     <div class="answer-content">
                         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(4, 120, 87, 0.15); padding-bottom: 8px; margin-bottom: 6px;">
