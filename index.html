@@ -382,6 +382,19 @@
             transform: scale(0.98);
         }
 
+        /* ★ 중지 상태일 때 표시될 차분한 딥 레드 톤 스타일 */
+        .search-submit-btn.cancel-mode {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .search-submit-btn.cancel-mode:hover {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
         /* 답변 결과 공간 */
         .answer-viewport {
             width: 100%;
@@ -779,8 +792,8 @@
             <!-- 검색 질의 폼 -->
             <div class="search-container">
                 <input type="text" class="search-input" id="aiQueryInput" placeholder="단어, 숙어 또는 원어를 입력하세요... (Enter 입력)" onkeypress="handleKeyPress(event)">
-                <button class="search-submit-btn" onclick="submitAIQuestion()">
-                    <span>검색</span>
+                <button class="search-submit-btn" id="aiSubmitBtn" onclick="handleSearchClick()">
+                    <span id="aiBtnText">검색</span>
                 </button>
             </div>
 
@@ -801,9 +814,22 @@
     </div>
 
     <script>
+        // 전역 상태 제어 변수 및 네트워크 중단 컨트롤러 선언
+        let isSearching = false;
+        let currentAbortController = null;
+
         // 키 누름 처리 (Enter 키 동작 매핑)
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
+                handleSearchClick();
+            }
+        }
+
+        // 검색 버튼 통합 제어 핸들러 (상태에 따라 검색 시작 또는 중지 처리)
+        function handleSearchClick() {
+            if (isSearching) {
+                cancelAIQuestion();
+            } else {
                 submitAIQuestion();
             }
         }
@@ -856,6 +882,13 @@
             return resultLines.join('\n').replace(/\n/g, '<br>');
         }
 
+        // API 호출 즉시 중단(취소) 핵심 로직
+        function cancelAIQuestion() {
+            if (currentAbortController) {
+                currentAbortController.abort();
+            }
+        }
+
         // 제미나이 API 호출 비동기 핵심 로직
         async function submitAIQuestion() {
             const inputField = document.getElementById('aiQueryInput');
@@ -864,12 +897,22 @@
 
             const viewport = document.getElementById('aiAnswerViewport');
             const loader = document.getElementById('aiLoader');
+            const submitBtn = document.getElementById('aiSubmitBtn');
+            const btnText = document.getElementById('aiBtnText');
 
-            // UI 상태를 즉시 전이 (로딩 중)
+            // UI 상태를 즉시 전이 (로딩 중 및 중지 가능 상태 활성화)
+            isSearching = true;
             viewport.classList.remove('active');
             viewport.innerHTML = "조회 중...";
             loader.style.display = 'flex';
             inputField.disabled = true;
+
+            // 버튼을 [중지] 상태 스타일로 즉시 변경
+            submitBtn.classList.add('cancel-mode');
+            btnText.innerText = "중지";
+
+            // 새로운 AbortController 인스턴스 생성
+            currentAbortController = new AbortController();
 
             // Canvas runtime에서 API 키를 자동으로 제공하므로 빈 값 유지
             const apiKey = "";
@@ -895,15 +938,28 @@
                     response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
+                        body: JSON.stringify(payload),
+                        signal: currentAbortController.signal // Abort 신호 연결
                     });
 
-                    if (response.ok) break; // 성공 시 루프 탈출
+                    if (response.ok) {
+                        break; // 성공 시 루프 탈출
+                    } else {
+                        // Response가 성공이 아닐 때 에러를 강제 발생시켜 무한 루프 진입 원천 봉쇄
+                        throw new Error(`API Error Status: ${response.status}`);
+                    }
                 } catch (error) {
-                    // Throttling 대비 지수 백오프 처리
+                    // 사용자가 의도적으로 '중지' 버튼을 누른 경우
+                    if (error.name === 'AbortError') {
+                        displayError("사용자에 의해 검색 작업이 취소되었습니다.");
+                        resetUIState();
+                        return;
+                    }
+
+                    // 일반 네트워크 에러 또는 타임아웃 지수 백오프 처리
                     retries--;
                     if (retries === 0) {
-                        displayError("연결 오류가 지속되어 의미를 찾지 못했습니다. 잠시 후 다시 시도해 주세요.");
+                        displayError("연결 오류가 지속되어 의미를 찾지 못했습니다. 서버 상태를 확인하거나 잠시 후 다시 시도해 주세요.");
                         resetUIState();
                         return;
                     }
@@ -947,9 +1003,20 @@
         function resetUIState() {
             const inputField = document.getElementById('aiQueryInput');
             const loader = document.getElementById('aiLoader');
+            const submitBtn = document.getElementById('aiSubmitBtn');
+            const btnText = document.getElementById('aiBtnText');
+
+            // 상태값 및 컨트롤러 초기화
+            isSearching = false;
+            currentAbortController = null;
 
             loader.style.display = 'none';
             inputField.disabled = false;
+            
+            // 버튼 디자인 원복
+            submitBtn.classList.remove('cancel-mode');
+            btnText.innerText = "검색";
+
             inputField.focus();
         }
     </script>
