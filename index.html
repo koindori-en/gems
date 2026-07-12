@@ -240,8 +240,6 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            margin-top: auto; /* 하단 밀착 */
-            flex-shrink: 0;
             z-index: 5;
         }
 
@@ -287,6 +285,188 @@
             gap: 6px 8px; /* 세로줄 6px, 가로줄 8px 배치 */
             padding: 2px 0 5px 0;
             overflow: hidden; /* 스크롤바 원천 제거 */
+        }
+
+        /* ★ 제미나이 질문 검색 및 답변 전용 프리미엄 워크스페이스 클래스 */
+        .ai-workspace-section {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: auto; /* 하단 최우선 정착 */
+            z-index: 5;
+        }
+
+        .workspace-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-bottom: 1px solid rgba(147, 51, 234, 0.2); 
+            padding-bottom: 6px;
+            margin-bottom: 4px;
+        }
+
+        .workspace-title {
+            color: #c084fc; /* 우아한 라벤더 퍼플 */
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
+        }
+
+        .workspace-title::before {
+            content: '⚡';
+            color: #c084fc;
+            font-size: 11px;
+            animation: lightning-glow 1.5s infinite alternate;
+        }
+
+        @keyframes lightning-glow {
+            0% { opacity: 0.5; filter: drop-shadow(0 0 2px #c084fc); }
+            100% { opacity: 1; filter: drop-shadow(0 0 8px #c084fc); }
+        }
+
+        /* 프리미엄 검색창 폼 */
+        .search-container {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+            position: relative;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: #f1f5f9;
+            font-family: inherit;
+            font-size: 13.5px;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-input:focus {
+            border-color: rgba(147, 51, 234, 0.6);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5),
+                        0 0 12px rgba(147, 51, 234, 0.25);
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .search-submit-btn {
+            background: linear-gradient(135deg, #7e22ce 0%, #6366f1 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 0 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .search-submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .search-submit-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* 답변 결과 공간 */
+        .answer-viewport {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 14px 18px;
+            min-height: 48px;
+            max-height: 350px;
+            overflow-y: auto;
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.6;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        /* 응답이 있는 활성 상태 */
+        .answer-viewport.active {
+            background: rgba(0, 0, 0, 0.45);
+            border-color: rgba(147, 51, 234, 0.15);
+            color: #e2e8f0;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        /* 마크다운 형태 응답 스타일링 */
+        .answer-content h3 {
+            color: #c084fc;
+            margin: 12px 0 6px 0;
+            font-size: 14px;
+        }
+        .answer-content strong {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+        .answer-content p {
+            margin-bottom: 8px;
+        }
+        .answer-content ul {
+            margin-left: 18px;
+            margin-bottom: 8px;
+            list-style-type: square;
+        }
+        .answer-content li {
+            margin-bottom: 4px;
+        }
+        .answer-content code {
+            background: rgba(147, 51, 234, 0.15);
+            color: #e9d5ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        /* 로더 애니메이션 */
+        .ai-loader {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            color: #c084fc;
+            font-weight: 500;
+        }
+
+        .pulse-bubble {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #c084fc;
+            animation: bubble-bounce 1.4s infinite ease-in-out both;
+        }
+
+        .pulse-bubble-1 { animation-delay: -0.32s; }
+        .pulse-bubble-2 { animation-delay: -0.16s; }
+
+        @keyframes bubble-bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
         }
 
         /* ========================================================
@@ -367,14 +547,31 @@
 
             /* 모바일 환경에서의 제미나이 젬스 하단 섹션 */
             .gems-section {
-                padding: 12px 15px 20px 15px;
+                padding: 12px 15px 12px 15px;
                 background: rgba(0, 0, 0, 0.4);
             }
 
             /* 모바일 환경에서 젬스 버튼 크기 1단계 상향 연동 */
             .gems-section .color-gemini-gems {
-                font-size: 14.5px !important;
-                padding: 7px 14px !important;
+                font-size: 14px !important;
+                padding: 6px 12px !important;
+            }
+
+            /* 모바일 환경에서의 워크스페이스 세션 구조화 */
+            .ai-workspace-section {
+                padding: 15px 15px 25px 15px;
+                background: rgba(15, 23, 42, 0.9);
+            }
+
+            .search-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .search-submit-btn {
+                width: 100%;
+                justify-content: center;
+                height: 38px;
             }
         }
     </style>
@@ -579,7 +776,190 @@
             </div>
         </div>
 
+        <!-- ★ 제미나이 질의응답을 즉석에서 처리할 수 있는 프리미엄 Gemini Workspace 섹션 -->
+        <div class="ai-workspace-section">
+            <div class="workspace-header">
+                <h2 class="workspace-title">Gemini Quick Workspace</h2>
+            </div>
+            
+            <!-- 검색 질의 폼 -->
+            <div class="search-container">
+                <input type="text" class="search-input" id="aiQueryInput" placeholder="제미나이에게 무엇이든 물어보세요... (Enter 입력 시 검색)" onkeypress="handleKeyPress(event)">
+                <button class="search-submit-btn" onclick="submitAIQuestion()">
+                    <span>질문하기</span>
+                    <span style="font-size: 11px;">✦</span>
+                </button>
+            </div>
+
+            <!-- 로딩 상태바 -->
+            <div class="ai-loader" id="aiLoader">
+                <div class="pulse-bubble pulse-bubble-1"></div>
+                <div class="pulse-bubble pulse-bubble-2"></div>
+                <div class="pulse-bubble pulse-bubble-3"></div>
+                <span style="font-size: 12px; margin-left: 4px;">제미나이가 답변을 생성하는 중입니다...</span>
+            </div>
+
+            <!-- 답변 출력 공간 -->
+            <div class="answer-viewport" id="aiAnswerViewport">
+                아직 질문이 없습니다. 위에 궁금한 질문을 입력하고 제미나이의 실시간 응답을 받아보세요.
+            </div>
+        </div>
+
     </div>
+
+    <script>
+        // 키 누름 처리 (Enter 키 동작 매핑)
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                submitAIQuestion();
+            }
+        }
+
+        // 마크다운 원시 텍스트를 아름다운 HTML로 보정해주는 미니 포맷터
+        function parseMarkdown(text) {
+            if (!text) return "";
+            
+            // 안전한 텍스트로 치환 및 개행 보정
+            let html = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+
+            // 볼드체 치환 (**text** -> <strong>text</strong>)
+            html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            // 코드 블록 치환 (`code` -> <code>code</code>)
+            html = html.replace(/`(.*?)`/g, '<code>$1</code>');
+
+            // 헤더 형식 변형 (### text -> <h3>text</h3>)
+            html = html.replace(/^### (.*?)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.*?)$/gm, '<h3>$1</h3>');
+
+            // 리스트 파싱 및 복원 (- item -> <li>item</li>)
+            let lines = html.split('\n');
+            let insideList = false;
+            let resultLines = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i].trim();
+                if (line.startsWith('- ') || line.startsWith('* ')) {
+                    if (!insideList) {
+                        resultLines.push('<ul>');
+                        insideList = true;
+                    }
+                    resultLines.push(`<li>${line.substring(2)}</li>`);
+                } else {
+                    if (insideList) {
+                        resultLines.push('</ul>');
+                        insideList = false;
+                    }
+                    resultLines.push(lines[i]);
+                }
+            }
+            if (insideList) {
+                resultLines.push('</ul>');
+            }
+
+            return resultLines.join('\n').replace(/\n/g, '<br>');
+        }
+
+        // 제미나이 API 호출 비동기 핵심 로직
+        async function submitAIQuestion() {
+            const inputField = document.getElementById('aiQueryInput');
+            const query = inputField.value.trim();
+            if (!query) return;
+
+            const viewport = document.getElementById('aiAnswerViewport');
+            const loader = document.getElementById('aiLoader');
+
+            // UI 상태를 즉시 전이 (로딩 중)
+            viewport.classList.remove('active');
+            viewport.innerHTML = "제미나이의 신호를 기다리는 중...";
+            loader.style.display = 'flex';
+            inputField.disabled = true;
+
+            // Canvas runtime에서 API 키를 자동으로 제공하므로 빈 값 유지
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            // API 호출 전송 본문 생성
+            const payload = {
+                contents: [{
+                    parts: [{ text: query }]
+                }],
+                systemInstruction: {
+                    parts: [{ text: "당신은 세계적인 지식 큐레이터이자 다정하고 명쾌한 인공지능 비서입니다. 사용자의 질문에 맞춰 보기 쉽고 깔끔하게 한국어로 구조화하여 상세히 답변해주세요." }]
+                }
+            };
+
+            // 지수 백오프 기반 에러 복원력을 위한 API 호출 실행 루프
+            let retries = 3;
+            let delay = 1000;
+            let response = null;
+
+            while (retries > 0) {
+                try {
+                    response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) break; // 성공 시 루프 탈출
+                } catch (error) {
+                    // Throttling 대비 지수 백오프 처리
+                    retries--;
+                    if (retries === 0) {
+                        displayError("네트워크 오류가 지속되어 제미나이에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+                        resetUIState();
+                        return;
+                    }
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                }
+            }
+
+            // 응답 유효성 및 파싱 단계
+            if (response && response.ok) {
+                try {
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+                    const replyText = candidate?.content?.parts?.[0]?.text;
+
+                    if (replyText) {
+                        // 결과 표시 전처리
+                        viewport.classList.add('active');
+                        viewport.innerHTML = `<div class="answer-content">${parseMarkdown(replyText)}</div>`;
+                    } else {
+                        displayError("답변 처리 과정에서 알 수 없는 빈 결과가 수신되었습니다.");
+                    }
+                } catch (parseErr) {
+                    displayError("답변 데이터를 처리하는 과정에 이상이 발생했습니다.");
+                }
+            } else {
+                displayError("제미나이 API 서버 응답에 일시적 지연이 발생하고 있습니다. 잠시 후 다시 시도해보세요.");
+            }
+
+            resetUIState();
+        }
+
+        // 에러 표시를 위한 전용 디렉션 메소드 (alert 배제)
+        function displayError(message) {
+            const viewport = document.getElementById('aiAnswerViewport');
+            viewport.classList.add('active');
+            viewport.innerHTML = `<div style="color: #f87171; font-weight: 500;">⚠️ 오류 발생: ${message}</div>`;
+        }
+
+        // 로딩 완료 후 UI 입력 상태 원복
+        function resetUIState() {
+            const inputField = document.getElementById('aiQueryInput');
+            const loader = document.getElementById('aiLoader');
+
+            loader.style.display = 'none';
+            inputField.disabled = false;
+            inputField.focus();
+        }
+    </script>
 
 </body>
 </html>
