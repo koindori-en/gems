@@ -877,10 +877,10 @@
         }
 
         /*
-         * [개별 한자 훈음(뜻/음) 조회 헬퍼 함수]
-         * 뜻을 가져와 "볼", "근심없을" 과 같은 전통적인 훈음 형태로 다듬어 출력합니다.
+         * [한자어 매핑 헬퍼 함수] 
+         * 한국어 단어가 주어지면 Wiktionary API를 조회하여 한자를 추출합니다.
          */
-        async function getHanjaHuneum(hanja, sound) {
+        async function getHanjaFromWiktionary(koreanWord) {
             try {
                 const url = `https://ko.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(hanja)}&prop=text&format=json&origin=*`;
                 const res = await fetch(url);
@@ -909,28 +909,75 @@
                         }
                     }
                 }
-            } catch (e) { console.error("Hanja detail parse error", e); }
-            
-            // 파싱 실패 시 직관적인 구글 번역 API 방식 사용 (폴백)
-            try {
-                const tUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-TW&tl=ko&dt=t&q=${encodeURIComponent(hanja)}`;
-                const tRes = await fetch(tUrl);
-                const tData = await tRes.json();
-                let meaning = tData[0][0][0].trim();
-                
-                if(meaning === hanja || meaning.length > 5) meaning = "뜻"; 
-                if (meaning.endsWith('다')) {
-                     if (meaning === '보다') meaning = '볼';
-                     else if (meaning.endsWith('하다')) meaning = meaning.replace('하다', '할');
-                }
-                
-                return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">${meaning} ${sound}</span>)</span>`;
             } catch (e) {
-                return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">뜻 ${sound}</span>)</span>`;
+                console.error("Hanja extraction failed", e);
             }
+            return null;
         }
 
-        // 검색 처리 핵심 메소드
+        /*
+         * [개별 한자 훈음(뜻/음) 조회 헬퍼 함수]
+         * 뜻을 가져와 "볼", "근심없을" 과 같은 전통적인 훈음 형태로 다듬어 출력합니다.
+         */
+        async function getHanjaHuneum(hanja, sound) {
+            try {
+                const url = `https://ko.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(hanja)}&prop=text&format=json&origin=*`;
+                const res = await fetch(url);
+                const data = await res.json();
+                
+                if (data && data.parse && data.parse.text) {
+                    const html = data.parse.text['*'];
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    
+                    // 1순위: 위키낱말사전 내 '음훈' 또는 '훈음' 선언 텍스트 정밀 탐색 (가장 정확한 전통 표기)
+                    const textBody = doc.body.textContent;
+                    const hunEumMatch = textBody.match(/(?:음훈|훈음|뜻과 음)\s*:\s*([^.\n]+)/);
+                    if (hunEumMatch) {
+                        const humeums = hunEumMatch[1].split(/[,;]/);
+                        for (let item of humeums) {
+                            // 한글과 공백만 추출 (특수기호 제거)
+                            item = item.replace(/[^\u3131-\u314e\u314f-\u3163\uac00-\ud7a3\s]/g, '').trim();
+                            const parts = item.split(/\s+/);
+                            if (parts.length >= 2) {
+                                const itemSound = parts[parts.length - 1]; // 예: '행'
+                                const itemMeaning = parts.slice(0, parts.length - 1).join(' '); // 예: '다닐'
+                                // 사용자가 검색한 단어의 음과 일치하는 훈음 세트를 반환
+                                if (itemSound === sound) {
+                                    return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">${itemMeaning} ${sound}</span>)</span>`;
+                                }
+                            }
+                        }
+                    }
+
+                    // 2순위: 명시적 훈음이 없는 경우, 사전 뜻풀이 문장에서 유추
+                    const listItems = doc.querySelectorAll('ol > li');
+                    for (let li of listItems) {
+                        let meaning = li.textContent.split(/[.,;\(]/)[0].trim();
+                        meaning = meaning.replace(/[^\u3131-\u314e\u314f-\u3163\uac00-\ud7a3\s]/g, '').trim(); 
+                        
+                        if (meaning && meaning.length > 0 && meaning.length < 15) {
+                            // 자연스러운 훈음 표기를 위한 어미 처리 ("다니다"->"다닐", "없다"->"없을")
+                            if (meaning.endsWith('다')) {
+                                if (meaning === '보다') meaning = '볼';
+                                else if (meaning === '다니다') meaning = '다닐';
+                                else if (meaning === '행하다') meaning = '행할';
+                                else if (meaning.endsWith('없다')) meaning = meaning.replace('없다', '없을');
+                                else if (meaning.endsWith('하다')) meaning = meaning.replace('하다', '할');
+                                else if (meaning.endsWith('이다')) meaning = meaning.replace('이다', '일');
+                                else if (meaning.endsWith('르다')) meaning = meaning.replace('르다', '를');
+                                else meaning = meaning.replace(/다$/, '을');
+                            }
+                            return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">${meaning} ${sound}</span>)</span>`;
+                        }
+                    }
+                }
+            } catch (e) { console.error("Hanja detail parse error", e); }
+            
+            // 파싱 실패 시: 구글 번역기는 중국어 슬랭(예: 行 -> '좋아요')을 반환하므로 제거하고 안전한 기본값 사용
+            return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">뜻 ${sound}</span>)</span>`;
+        }
+
+        // 검색 처리 핵심 메소드 (외부 API 연동으로 에러 없는 실시간 번역 + 영단어 정밀 조회 및 유의어/반의어 수집)
         async function searchWord() {
             const inputField = document.getElementById('vocaQueryInput');
             const query = inputField.value.trim();
