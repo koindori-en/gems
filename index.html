@@ -168,63 +168,43 @@
             white-space: nowrap;
         }
 
-        /* ★ 커스텀 브랜드 색상 유틸리티 클래스 (기본 테두리 및 브랜드 고유 호버 컬러 적용) */
-        /* 로고스 바이블 (기본 테두리 + 청색 호버 효과) */
+        /* ★ 커스텀 브랜드 색상 유틸리티 클래스 */
         .color-logos { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(59, 130, 246, 0.7); --btn-glow-shadow: rgba(59, 130, 246, 0.35); }
-        /* 에누리/다음 이펙트용 (기본 테두리 + 황색 호버 효과) */
         .color-daum { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(250, 204, 21, 0.7); --btn-glow-shadow: rgba(250, 204, 21, 0.35); }
-        /* 유튜브 (기본 테두리 + 적색 호버 효과) */
         .color-youtube { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(239, 68, 68, 0.7); --btn-glow-shadow: rgba(239, 68, 68, 0.35); }
-        /* 구글 (기본 테두리 + 백색 호버 효과) */
         .color-google { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(156, 163, 175, 0.7); --btn-glow-shadow: rgba(156, 163, 175, 0.35); }
-        /* 네이버 (기본 테두리 + 녹색 호버 효과) */
         .color-naver { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(34, 197, 94, 0.7); --btn-glow-shadow: rgba(34, 197, 94, 0.35); }
-        /* Auphonic (기본 테두리 + 루비 호버 효과) */
         .color-auphonic { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(225, 29, 72, 0.7); --btn-glow-shadow: rgba(225, 29, 72, 0.35); }
-        /* Gemini (기본 테두리 + 하늘색 호버 효과) */
         .color-gemini { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(0, 191, 255, 0.8); --btn-glow-shadow: rgba(0, 191, 255, 0.4); }
-        /* 새제천교회 (기본 테두리 + 연두색 호버 효과) */
         .color-saejecheon { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(132, 204, 22, 0.7); --btn-glow-shadow: rgba(132, 204, 22, 0.35); }
-        /* 주민등록 (기본 테두리 + 주황색 호버 효과) */
         .color-jumin { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(249, 115, 22, 0.7); --btn-glow-shadow: rgba(249, 115, 22, 0.35); }
 
-        /* ★ 제미나이 젬스 전용 스타일 (기본 테두리 통일, 크기 1단계 상향 및 원래의 미니멀한 감성 복원) */
+        /* ★ 제미나이 젬스 전용 스타일 */
         .color-gemini-gems {
             background-color: rgba(255, 255, 255, 0.02) !important;
             color: #94a3b8;
             border: 1px solid rgba(255, 255, 255, 0.04) !important;
-            font-size: 13.5px !important; /* 기존 12px에서 1단계 키워 가독성 상향 */
-            padding: 5px 12px !important; /* 가로세로 패딩을 넓혀 1단계 볼륨감 제공 */
+            font-size: 13.5px !important; 
+            padding: 5px 12px !important; 
         }
 
-        /* ★ 떨림 없는 프리미엄 호버 이펙트 (Glow & No Translate) */
+        /* ★ 떨림 없는 프리미엄 호버 이펙트 */
         @media (hover: hover) {
             .link-btn:hover {
-                /* 배경 살짝 밝게 */
                 background-color: rgba(255, 255, 255, 0.1); 
-                /* 텍스트 퓨어 화이트로 쨍하게 */
                 color: #ffffff; 
-                
-                /* 호버 시 변수에 지정된 글로우 색상 사용 */
                 border-color: var(--btn-glow);
-                
-                /* 크기 및 위치 이동 배제 (정적 레이아웃 유지) */
                 transform: none; 
-                
-                /* 변수에 지정된 색상으로 유리 버튼 아래로 퍼지는 네온 글로우 그림자 */
                 box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3), 
                             0 0 10px var(--btn-glow-shadow);
                 z-index: 2; 
             }
 
-            /* ★ 제미나이 젬스 전용 햅틱 롤오버 효과 (검은색 음각 변형 및 깊이감 복원) */
             .color-gemini-gems:hover {
                 background-color: rgba(0, 0, 0, 0.5) !important;
                 color: #e2e8f0 !important;
                 border-color: rgba(56, 189, 248, 0.25) !important;
-                /* 누르는 듯한 미세한 안쪽 스케일 수축 */
                 transform: scale(0.97) translateY(1px) !important;
-                /* 정교한 3D 안쪽 섀도우를 사용한 정통 음각 연출 */
                 box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.85), 
                             0 1px 1px rgba(255, 255, 255, 0.02) !important;
             }
@@ -236,7 +216,7 @@
             background: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 25px; /* 패딩을 절반 가량 압축하여 세로 공간 최적화 */
+            padding: 12px 25px; 
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -253,8 +233,8 @@
         }
 
         .gems-title {
-            color: #38bdf8; /* 세련된 제미나이 스카이블루 */
-            font-size: 12px; /* 14px에서 12px로 슬림 디자인 매핑 */
+            color: #38bdf8; 
+            font-size: 12px; 
             font-weight: 700; 
             letter-spacing: 2.5px;
             margin: 0;
@@ -264,7 +244,6 @@
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
         }
 
-        /* 반짝이는 펄스 이펙트 장식 */
         .gems-title::before {
             content: '✦';
             color: #38bdf8;
@@ -277,27 +256,26 @@
             100% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 8px #38bdf8; }
         }
 
-        /* ★ 스크롤바 없는 2열(줄) 전용 랩 트랙 */
         .gems-track {
             display: flex;
             flex-direction: row;
-            flex-wrap: wrap; /* 가로 스와이프 대신 자연스럽게 하단 배치 */
-            gap: 6px 8px; /* 세로줄 6px, 가로줄 8px 배치 */
+            flex-wrap: wrap; 
+            gap: 6px 8px; 
             padding: 2px 0 5px 0;
-            overflow: hidden; /* 스크롤바 원천 제거 */
+            overflow: hidden; 
         }
 
-        /* ★ 네이버 사전 전용 슬림 & 미니멀 워크스페이스 클래스 (고급 다크 그린 테마 보강) */
+        /* ★ 네이버 사전 전용 슬림 & 미니멀 워크스페이스 클래스 */
         .ai-workspace-section {
             width: 100%;
-            background: rgba(4, 20, 15, 0.65); /* 은은하고 묵직한 딥 다크 포레스트 그린 백그라운드 */
+            background: rgba(4, 20, 15, 0.65); 
             backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(4, 120, 87, 0.25); /* 격조 높은 다크 그린 경계선 */
+            border-top: 1px solid rgba(4, 120, 87, 0.25); 
             padding: 16px 25px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-top: auto; /* 하단 최우선 정착 */
+            margin-top: auto; 
             z-index: 5;
         }
 
@@ -311,7 +289,7 @@
         }
 
         .workspace-title {
-            color: #059669; /* 격조 있는 딥 다크 그린 */
+            color: #059669; 
             font-size: 13.5px;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -320,42 +298,32 @@
             align-items: center;
             gap: 7px;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-            cursor: pointer; /* 마우스 포인터 추가 */
+            cursor: pointer; 
             transition: color 0.25s ease;
         }
 
         .workspace-title:hover {
-            color: #34d399; /* 호버 시 밝은 민트/그린으로 하이라이트 */
+            color: #34d399; 
         }
 
         /* ★ 고급스럽고 세련되게 다듬어진 미세 펄스 아이콘 */
         .breathing-dot {
             width: 6px;
             height: 6px;
-            background-color: #10b981; /* 시인성이 보강된 에메랄드 그린 */
+            background-color: #10b981; 
             border-radius: 50%;
-            /* 너무 넓게 튀지 않으면서 은은하고 고급스럽게 천천히 움직이는 속도 조절 */
             animation: pulse-green-refined 3.5s infinite ease-in-out;
             display: inline-block;
             flex-shrink: 0;
         }
 
         @keyframes pulse-green-refined {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); /* 파장 범위를 5px로 미세 수축하여 세련되게 조절 */
-            }
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-            }
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
-        /* 프리미엄 검색창 폼 (초록 테마 조화) */
+        /* 프리미엄 검색창 폼 */
         .search-container {
             display: flex;
             width: 100%;
@@ -384,11 +352,10 @@
             background: rgba(0, 0, 0, 0.55);
         }
 
-        /* ★ 리디자인: 컴팩트하고 눈부시지 않으며 고급스러운 슬림 디자인 + 마우스 오버 시 완벽한 음각 표현 */
         .search-action-btn.btn-search {
-            background: rgba(6, 78, 59, 0.2); /* 눈부시지 않는 딥 포레스트 아웃라인 매트 스타일 */
+            background: rgba(6, 78, 59, 0.2); 
             border: 1px solid rgba(16, 185, 129, 0.35);
-            color: #a7f3d0; /* 가독성 높고 은은한 그린 텍스트 */
+            color: #a7f3d0; 
             font-weight: 500;
             font-size: 12.5px;
             padding: 0 24px;
@@ -398,7 +365,6 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-            /* 모션 정밀 바운스 제거, 묵직하고 리얼한 햅틱 전환 */
             transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
             white-space: nowrap;
             letter-spacing: 1px;
@@ -406,13 +372,11 @@
             position: relative;
         }
 
-        /* 마우스 오버(Hover) 시 물리적인 느낌의 음각(Engraved)과 안쪽 침하 효과 */
         .search-action-btn.btn-search:hover {
-            background-color: rgba(4, 15, 10, 0.8) !important; /* 안쪽으로 어둡고 투명하게 빠지는 각인부 */
-            border-color: rgba(16, 185, 129, 0.15) !important; /* 튀지 않게 죽여주는 경계선 */
-            color: #10b981 !important; /* 시인성만 보장하는 진한 그린 */
-            transform: translateY(1.5px) !important; /* 미세하게 눌리는 기계식 키 느낌 연출 */
-            /* 다중 안쪽 이너 섀도우를 통해 내부를 깊숙히 깎아서 새겨놓은 정밀 정통 음각 묘사 */
+            background-color: rgba(4, 15, 10, 0.8) !important; 
+            border-color: rgba(16, 185, 129, 0.15) !important; 
+            color: #10b981 !important; 
+            transform: translateY(1.5px) !important; 
             box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.95), 
                         inset 0 1px 3px rgba(0, 0, 0, 0.8), 
                         0 1px 0 rgba(255, 255, 255, 0.03) !important;
@@ -431,7 +395,7 @@
             border-radius: 6px;
             padding: 12px 16px;
             min-height: 50px;
-            max-height: 380px; /* 유의어/반의어 확장에 대비해 세로 높이 임계치 약간 완화 */
+            max-height: 380px; 
             overflow-y: auto;
             color: #cbd5e1;
             font-size: 12.5px;
@@ -440,10 +404,7 @@
             position: relative;
         }
 
-        /* 페이드인 애니메이션 */
-        .answer-content {
-            animation: fadeIn 0.3s ease forwards;
-        }
+        .answer-content { animation: fadeIn 0.3s ease forwards; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(4px); }
@@ -488,9 +449,7 @@
             transition: background 0.2s;
         }
 
-        .voca-tag-delete:hover {
-            background: rgba(239, 68, 68, 0.2);
-        }
+        .voca-tag-delete:hover { background: rgba(239, 68, 68, 0.2); }
 
         .voca-clear-btn {
             background: transparent;
@@ -510,7 +469,7 @@
             background: rgba(239, 68, 68, 0.05);
         }
 
-        /* 로더 애니메이션 (차분한 그린 펄스) */
+        /* 로더 애니메이션 */
         .ai-loader {
             display: flex;
             align-items: center;
@@ -541,11 +500,9 @@
            ======================================================== */
         @media (max-width: 1024px) {
             .column {
-                /* 공간이 좁아지면 2단 배열로 자동 전환 */
                 width: calc((100% - 15px) / 2);
             }
             .column:last-child {
-                /* 마지막 세 번째 열은 전체 너비 사용 */
                 width: 100%; 
                 margin-top: 5px;
             }
@@ -558,7 +515,7 @@
             body {
                 padding: 0;
                 align-items: flex-start; 
-                background: #0f172a !important; /* 모바일 배경을 심리스한 다크로 통일 */
+                background: #0f172a !important; 
             }
 
             .slide-container {
@@ -583,7 +540,7 @@
                 -webkit-backdrop-filter: blur(12px);
                 box-shadow: 0 4px 20px rgba(0,0,0,0.5); 
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                justify-content: center; /* 타이틀 중앙 정렬 */
+                justify-content: center; 
                 height: 38px;
             }
 
@@ -592,39 +549,34 @@
                 flex-wrap: nowrap;
                 height: auto;
                 margin: 0; 
-                padding: 15px 15px 20px 15px; /* 모바일 전용 최적화 */
+                padding: 15px 15px 20px 15px; 
                 flex-grow: 1;
             }
 
             .column {
-                width: 100%; /* 모바일에서는 1단 배열 */
+                width: 100%; 
                 gap: 15px; 
                 margin-top: 0;
             }
 
-            .links-wrapper {
-                gap: 8px 6px; /* 모바일 터치 편의성과 밀착을 함께 반영 */
-            }
+            .links-wrapper { gap: 8px 6px; }
 
             .link-btn {
                 padding: 4px 10px; 
                 font-size: 13px; 
-                background-color: rgba(255, 255, 255, 0.05); /* 모바일에서는 살짝 더 밝게 */
+                background-color: rgba(255, 255, 255, 0.05); 
             }
 
-            /* 모바일 환경에서의 제미나이 젬스 하단 섹션 */
             .gems-section {
                 padding: 12px 15px 12px 15px;
                 background: rgba(0, 0, 0, 0.4);
             }
 
-            /* 모바일 환경에서 젬스 버튼 크기 1단계 상향 연동 */
             .gems-section .color-gemini-gems {
                 font-size: 14px !important;
                 padding: 6px 12px !important;
             }
 
-            /* 모바일 환경에서의 워크스페이스 세션 구조화 */
             .ai-workspace-section {
                 padding: 15px 15px 25px 15px;
                 background: rgba(15, 23, 42, 0.9);
@@ -639,7 +591,7 @@
                 width: 100%;
                 height: 38px;
                 font-size: 13px;
-                transform: none !important; /* 모바일 탭 오버 시 무의미한 음각 변형 배제 */
+                transform: none !important; 
             }
         }
     </style>
@@ -879,7 +831,106 @@
             }
         }
 
-        // 검색 처리 핵심 메소드 (외부 API 연동으로 에러 없는 실시간 번역 + 영단어 정밀 조회 및 유의어/반의어 수집)
+        /* 
+         * [한자어 매핑 헬퍼 함수] 
+         * 한국어 단어가 주어지면 Wiktionary API를 조회하여 한자를 추출합니다.
+         */
+        async function getHanjaFromWiktionary(koreanWord) {
+            try {
+                const url = `https://ko.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(koreanWord)}&prop=text&format=json&origin=*`;
+                const res = await fetch(url);
+                const data = await res.json();
+                
+                if (data && data.parse && data.parse.text) {
+                    const html = data.parse.text['*'];
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    // 1. 괄호 안의 한자 먼저 찾기 (가장 정확한 전통적 표기 방식)
+                    const paragraphs = doc.querySelectorAll('p, li');
+                    for (let p of paragraphs) {
+                        const text = p.textContent;
+                        const match = text.match(/\(([^)]*[\u4e00-\u9fa5]+[^)]*)\)/);
+                        if (match) {
+                            const hanjaOnly = match[1].replace(/[^\u4e00-\u9fa5]/g, '');
+                            if (hanjaOnly.length === koreanWord.length) {
+                                return hanjaOnly;
+                            }
+                        }
+                    }
+
+                    // 2. 괄호가 없는 경우 (예: "어원: 한자 恝視") 본문 전체에서 길이가 일치하는 한자 뭉치 찾기
+                    const allText = doc.body.textContent;
+                    const hanjaMatches = allText.match(/[\u4e00-\u9fa5]+/g);
+                    if (hanjaMatches) {
+                        for (let hanja of hanjaMatches) {
+                            if (hanja.length === koreanWord.length) {
+                                return hanja;
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error("Hanja extraction failed", e);
+            }
+            return null;
+        }
+
+        /*
+         * [개별 한자 훈음(뜻/음) 조회 헬퍼 함수]
+         * 뜻을 가져와 "볼", "근심없을" 과 같은 전통적인 훈음 형태로 다듬어 출력합니다.
+         */
+        async function getHanjaHuneum(hanja, sound) {
+            try {
+                const url = `https://ko.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(hanja)}&prop=text&format=json&origin=*`;
+                const res = await fetch(url);
+                const data = await res.json();
+                
+                if (data && data.parse && data.parse.text) {
+                    const html = data.parse.text['*'];
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    
+                    // 위키낱말사전 한자 페이지의 뜻풀이는 주로 <ol> <li> 에 위치함
+                    const listItems = doc.querySelectorAll('ol > li');
+                    for (let li of listItems) {
+                        let meaning = li.textContent.split('.')[0].split(',')[0].trim();
+                        meaning = meaning.replace(/[^\u3131-\u314e\u314f-\u3163\uac00-\ud7a3\s]/g, '').trim(); 
+                        
+                        if (meaning && meaning.length > 0 && meaning.length < 15) {
+                            // 자연스러운 훈음 표기를 위한 간단한 어미 처리 ("보다"->"볼", "없다"->"없을")
+                            if (meaning.endsWith('다')) {
+                                if (meaning === '보다') meaning = '볼';
+                                else if (meaning.endsWith('없다')) meaning = meaning.replace('없다', '없을');
+                                else if (meaning.endsWith('하다')) meaning = meaning.replace('하다', '할');
+                                else if (meaning.endsWith('이다')) meaning = meaning.replace('이다', '일');
+                            }
+                            // 유저 요청 포맷: 한자(뜻 음)
+                            return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">${meaning} ${sound}</span>)</span>`;
+                        }
+                    }
+                }
+            } catch (e) { console.error("Hanja detail parse error", e); }
+            
+            // 파싱 실패 시 직관적인 구글 번역 API 방식 사용 (폴백)
+            try {
+                const tUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-TW&tl=ko&dt=t&q=${encodeURIComponent(hanja)}`;
+                const tRes = await fetch(tUrl);
+                const tData = await tRes.json();
+                let meaning = tData[0][0][0].trim();
+                
+                if(meaning === hanja || meaning.length > 5) meaning = "뜻"; 
+                if (meaning.endsWith('다')) {
+                     if (meaning === '보다') meaning = '볼';
+                     else if (meaning.endsWith('하다')) meaning = meaning.replace('하다', '할');
+                }
+                
+                return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">${meaning} ${sound}</span>)</span>`;
+            } catch (e) {
+                return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">뜻 ${sound}</span>)</span>`;
+            }
+        }
+
+        // 검색 처리 핵심 메소드
         async function searchWord() {
             const inputField = document.getElementById('vocaQueryInput');
             const query = inputField.value.trim();
@@ -908,6 +959,34 @@
                 // 한글 여부 확인
                 const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(query);
                 const targetLang = isKorean ? 'en' : 'ko';
+                
+                let hanjaHtmlBlock = ''; // 한자어인 경우 삽입될 HTML 블록
+
+                // ★ 신규 기능: 한글 검색 시 한자어 분석 및 훈음 추출 로직
+                if (isKorean) {
+                    const hanjaWord = await getHanjaFromWiktionary(query);
+                    
+                    if (hanjaWord && hanjaWord.length === query.length) {
+                        // 병렬로 각 한자의 훈음을 고속 추출
+                        const hanjaPromises = [];
+                        for (let i = 0; i < hanjaWord.length; i++) {
+                            hanjaPromises.push(getHanjaHuneum(hanjaWord[i], query[i]));
+                        }
+                        const hanjaDetails = await Promise.all(hanjaPromises);
+                        
+                        // 다크 테마 및 그린 워크스페이스에 어울리는 고급 UI 구성 (요청하신 포맷으로 가로 나열)
+                        hanjaHtmlBlock = `
+                            <div style="margin-top: 10px; padding: 10px 14px; background: rgba(4, 120, 87, 0.15); border: 1px solid rgba(4, 120, 87, 0.35); border-radius: 6px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);">
+                                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                                    <span style="font-size: 10.5px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 3px; letter-spacing: 1px;">한자어 풀이</span>
+                                </div>
+                                <div style="font-size: 16px; font-weight: 600; color: #ffffff; letter-spacing: 0.5px; line-height: 1.4;">
+                                    ${hanjaDetails.join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
 
                 // 구글 gtx 엔진을 통한 정밀 실시간 번역 API 호출 (검색어 자체의 일차적 대역어 확보)
                 const translateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(query)}`;
@@ -915,7 +994,7 @@
                 const translateData = await translateRes.json();
                 const translationText = translateData[0].map(item => item[0]).join('');
 
-                // 영문 추출 (사전용)
+                // 영문 추출 (영어 사전용)
                 let englishWord = isKorean ? translationText.trim().split(' ')[0] : query;
                 englishWord = englishWord.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
 
@@ -1076,7 +1155,7 @@
                                 dictHtml += `</ul></div>`;
                             });
 
-                            // ★ 유의어 및 반의어 HTML 구조화 통합 고도화 (클릭 시 자가 동적 검색 연계)
+                            // ★ 유의어 및 반의어 HTML 구조화 통합 고도화
                             let saHtml = '';
                             if (synonymsList.length > 0 || antonymsList.length > 0) {
                                 saHtml += `
@@ -1135,7 +1214,7 @@
                     }
                 }
 
-                // 웹페이지 내부 시각화 화면 구성
+                // 웹페이지 내부 시각화 화면 구성 (한자어 정보 포함)
                 let resultHtml = `
                     <div class="answer-content">
                         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(4, 120, 87, 0.15); padding-bottom: 8px; margin-bottom: 6px;">
@@ -1146,6 +1225,7 @@
                                 <div style="font-size: 14px; font-weight: 700; color: #10b981;">${escapeHtml(translationText)}</div>
                             </div>
                         </div>
+                        ${hanjaHtmlBlock}
                         ${dictHtml}
                     </div>
                 `;
@@ -1206,7 +1286,7 @@
             renderRecentWords();
         }
 
-        // 단어장 타일을 눌렀을 때 네이버 사전으로 바로 검색하는 숏컷
+        // 단어장 타일을 눌렀을 때 사전으로 바로 검색하는 숏컷
         function searchDirectly(word) {
             document.getElementById('vocaQueryInput').value = word;
             searchWord();
