@@ -127,67 +127,71 @@
             align-content: flex-start;
         }
 
-        /* 버튼 전용 글래스모피즘 - 1단계 크기 확대 */
+        /* 버튼 전용 글래스모피즘 - 1단계 크기 확대 및 세련된 미니멀 테마 */
         .link-btn {
-            --btn-border: rgba(255, 255, 255, 0.07);
-            --btn-glow: rgba(129, 140, 248, 0.5);
-            --btn-glow-shadow: rgba(129, 140, 248, 0.25);
-
+            position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 6px 14px;
-            background-color: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.035); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             color: #cbd5e1;
             font-size: 13.5px;
             font-weight: 500;
-            border-radius: 6px; 
+            border-radius: 8px; 
             cursor: pointer;
-            border: 1px solid var(--btn-border); 
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        background-color 0.3s ease, 
-                        color 0.3s ease, 
-                        border-color 0.3s ease, 
-                        box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        background-color 0.25s ease, 
+                        color 0.25s ease, 
+                        border-color 0.25s ease, 
+                        box-shadow 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
             user-select: none;
             white-space: nowrap;
+            overflow: hidden;
         }
 
-        /* 커스텀 브랜드 색상 유틸리티 클래스 */
-        .color-jupum { --btn-border: rgba(245, 158, 11, 0.5); --btn-glow: rgba(245, 158, 11, 0.85); --btn-glow-shadow: rgba(245, 158, 11, 0.4); }
-        .color-logos { --btn-border: rgba(59, 130, 246, 0.45); --btn-glow: rgba(96, 165, 250, 0.85); --btn-glow-shadow: rgba(59, 130, 246, 0.4); }
-        .color-daum { --btn-border: rgba(253, 224, 71, 0.55); --btn-glow: rgba(250, 204, 21, 0.9); --btn-glow-shadow: rgba(250, 204, 21, 0.45); }
-        .color-youtube { --btn-border: rgba(239, 68, 68, 0.55); --btn-glow: rgba(248, 113, 113, 0.85); --btn-glow-shadow: rgba(239, 68, 68, 0.45); }
-        .color-google { --btn-border: rgba(226, 232, 240, 0.45); --btn-glow: rgba(255, 255, 255, 0.85); --btn-glow-shadow: rgba(255, 255, 255, 0.35); }
-        .color-naver { --btn-border: rgba(34, 197, 94, 0.45); --btn-glow: rgba(74, 222, 128, 0.85); --btn-glow-shadow: rgba(34, 197, 94, 0.4); }
-        .color-auphonic { --btn-border: rgba(168, 85, 247, 0.55); --btn-glow: rgba(217, 70, 239, 0.85); --btn-glow-shadow: rgba(168, 85, 247, 0.45); }
-        .color-gemini { --btn-border: rgba(14, 165, 233, 0.5); --btn-glow: rgba(56, 189, 248, 0.85); --btn-glow-shadow: rgba(14, 165, 233, 0.4); }
-        .color-saejecheon { --btn-border: rgba(132, 204, 22, 0.45); --btn-glow: rgba(163, 230, 53, 0.85); --btn-glow-shadow: rgba(132, 204, 22, 0.4); }
-        .color-jumin { --btn-border: rgba(249, 115, 22, 0.5); --btn-glow: rgba(251, 146, 60, 0.85); --btn-glow-shadow: rgba(249, 115, 22, 0.4); }
-
-        /* 제미나이 젬스 전용 스타일 - 1단계 크기 확대 */
-        .color-gemini-gems {
-            background-color: rgba(255, 255, 255, 0.02) !important;
-            color: #94a3b8;
-            border: 1px solid rgba(255, 255, 255, 0.04) !important;
-            font-size: 15px !important; 
-            padding: 8px 16px !important; 
+        /* 롤오버 시 사선으로 부드럽게 반사광이 지나가는 액티브 쉬머 효과 */
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+            transform: skewX(-22deg);
+            transition: left 0.65s ease;
+            pointer-events: none;
         }
 
-        /* 호버 이펙트 */
+        /* 세련되고 능동적인 롤오버 인터랙션 (Gemini Gems 제외) */
         @media (hover: hover) {
-            .link-btn:hover {
-                background-color: rgba(255, 255, 255, 0.1); 
-                color: #ffffff; 
-                border-color: var(--btn-glow);
-                transform: none; 
-                box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3), 
-                            0 0 10px var(--btn-glow-shadow);
-                z-index: 2; 
+            .link-btn:not(.color-gemini-gems):hover {
+                transform: translateY(-3px) scale(1.02);
+                background-color: rgba(255, 255, 255, 0.09);
+                color: #ffffff;
+                border-color: rgba(255, 255, 255, 0.24);
+                box-shadow: 0 8px 20px -3px rgba(0, 0, 0, 0.5), 
+                            0 4px 12px rgba(99, 102, 241, 0.2),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                z-index: 2;
             }
 
+            .link-btn:not(.color-gemini-gems):hover::before {
+                left: 170%;
+            }
+
+            .link-btn:not(.color-gemini-gems):active {
+                transform: translateY(-1px) scale(0.99);
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+                transition-duration: 0.1s;
+            }
+
+            /* 제미나이 젬스 전용 호버 효과 (기존 그대로 완전 유지) */
             .color-gemini-gems:hover {
                 background-color: rgba(0, 0, 0, 0.5) !important;
                 color: #e2e8f0 !important;
@@ -196,6 +200,19 @@
                 box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.85), 
                             0 1px 1px rgba(255, 255, 255, 0.02) !important;
             }
+        }
+
+        /* 제미나이 젬스 전용 스타일 - 기존 규격 및 디자인 100% 보존 */
+        .color-gemini-gems {
+            background-color: rgba(255, 255, 255, 0.02) !important;
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.04) !important;
+            font-size: 15px !important; 
+            padding: 8px 16px !important; 
+        }
+
+        .color-gemini-gems::before {
+            display: none !important;
         }
 
         /* Gemini Gems 섹션 */
@@ -351,7 +368,7 @@
                     <h2 class="cat-title">CREATIVE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://pngtree.com/', '_blank')">Pngtree</div>
-                        <div class="link-btn color-jupum" onclick="window.open('https://www.jupum.com/', '_blank')">주품디자인</div>
+                        <div class="link-btn" onclick="window.open('https://www.jupum.com/', '_blank')">주품디자인</div>
                     </div>
                 </div>
 
@@ -359,7 +376,7 @@
                     <h2 class="cat-title">PUBLIC</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://efamily.scourt.go.kr/index.jsp', '_blank')">가족관계</div>
-                        <div class="link-btn color-jumin" onclick="window.open('https://plus.gov.kr/', '_blank')">주민등록</div>
+                        <div class="link-btn" onclick="window.open('https://plus.gov.kr/', '_blank')">주민등록</div>
                         <div class="link-btn" onclick="window.open('https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml', '_blank')">홈텍스</div>
                     </div>
                 </div>
@@ -367,7 +384,7 @@
                 <div class="category-box">
                     <h2 class="cat-title">AI PLATFORMS</h2>
                     <div class="links-wrapper">
-                        <div class="link-btn color-gemini" onclick="window.open('https://gemini.google.com/app', '_blank')">Gemini</div>
+                        <div class="link-btn" onclick="window.open('https://gemini.google.com/app', '_blank')">Gemini</div>
                         <div class="link-btn" onclick="window.open('https://notebooklm.google.com/', '_blank')">Notebook LM</div>
                     </div>
                 </div>
@@ -378,7 +395,7 @@
                 <div class="category-box">
                     <h2 class="cat-title">CHRISTIAN</h2>
                     <div class="links-wrapper">
-                        <div class="link-btn color-logos" onclick="window.open('https://kr.logos.com/', '_blank')">로고스바이블</div>
+                        <div class="link-btn" onclick="window.open('https://kr.logos.com/', '_blank')">로고스바이블</div>
                         <div class="link-btn" onclick="window.open('https://www.gapck.org/', '_blank')">총회</div>
                     </div>
                 </div>
@@ -387,7 +404,7 @@
                     <h2 class="cat-title">COMMERCE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://www.daum.net/', '_blank')">다음</div>
-                        <div class="link-btn color-daum" onclick="window.open('https://www.enuri.com/', '_blank')">에누리</div>
+                        <div class="link-btn" onclick="window.open('https://www.enuri.com/', '_blank')">에누리</div>
                         <div class="link-btn" onclick="window.open('https://github.com/', '_blank')">깃허브</div>
                         <div class="link-btn" onclick="window.open('https://www.ppurio.com/', '_blank')">뿌리오</div>
                         <div class="link-btn" onclick="window.open('https://www.ilovepdf.com/ko/pdf_to_jpg', '_blank')">PDF</div>
@@ -400,7 +417,7 @@
                     <h2 class="cat-title">WORKSPACE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://wfree.dimode.co.kr/saejecheon', '_blank')">디모데 SJC</div>
-                        <div class="link-btn color-saejecheon" onclick="window.open('https://saejecheon.com/bbs/login.php?url=https://saejecheon.com/bbs/board.php?bo_table=gallery', '_blank')">새제천교회</div>
+                        <div class="link-btn" onclick="window.open('https://saejecheon.com/bbs/login.php?url=https://saejecheon.com/bbs/board.php?bo_table=gallery', '_blank')">새제천교회</div>
                         <div class="link-btn" onclick="window.open('https://koindori-en.github.io/profile/', '_blank')">PROFILE</div>
                     </div>
                 </div>
@@ -412,19 +429,19 @@
                     <h2 class="cat-title">ENTERTAINMENT</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://www.netflix.com/kr/', '_blank')">NETFLIX</div>
-                        <div class="link-btn color-youtube" onclick="window.open('https://www.youtube.com/', '_blank')">유튜브</div>
+                        <div class="link-btn" onclick="window.open('https://www.youtube.com/', '_blank')">유튜브</div>
                         <div class="link-btn" onclick="window.open('https://www.instagram.com/', '_blank')">인스타그램</div>
-                        <div class="link-btn color-auphonic" onclick="window.open('https://auphonic.com/account/login/?next=/engine/', '_blank')">Auphonic</div>
+                        <div class="link-btn" onclick="window.open('https://auphonic.com/account/login/?next=/engine/', '_blank')">Auphonic</div>
                     </div>
                 </div>
 
                 <div class="category-box">
                     <h2 class="cat-title">PORTAL</h2>
                     <div class="links-wrapper">
-                        <div class="link-btn color-google" onclick="window.open('https://www.google.com/', '_blank')">구글</div>
+                        <div class="link-btn" onclick="window.open('https://www.google.com/', '_blank')">구글</div>
                         <div class="link-btn" onclick="window.open('https://drive.google.com/drive/my-drive', '_blank')">드라이브</div>
                         <div class="link-btn" onclick="window.open('https://mail.google.com/mail/u/0/#inbox', '_blank')">지메일</div>
-                        <div class="link-btn color-naver" onclick="window.open('https://www.naver.com/', '_blank')">네이버</div>
+                        <div class="link-btn" onclick="window.open('https://www.naver.com/', '_blank')">네이버</div>
                         <div class="link-btn" onclick="window.open('https://map.naver.com/p/', '_blank')">지도</div>
                         <div class="link-btn" onclick="window.open('https://cafe.naver.com/joonggonara', '_blank')">중고나라</div>
                     </div>
