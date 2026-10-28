@@ -9,7 +9,7 @@
     
     <!-- 브라우저 탭에 표시될 아이콘(파비콘) 설정 -->
     <link rel="icon" href="logo2.png">
-    <link rel="apple-touch-icon" href="logo.png"> <!-- 모바일 홈화면 추가 시 아이콘 -->
+    <link rel="apple-touch-icon" href="logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -31,18 +31,16 @@
             min-height: 100vh;
             font-family: 'Noto Sans KR', sans-serif;
             overflow-x: hidden;
-            /* 창 크기를 줄였을 때 잘리지 않고 상하 스크롤이 되도록 auto 설정 */
             overflow-y: auto; 
-            -webkit-font-smoothing: antialiased; /* 텍스트 렌더링 고급화 */
-            padding: 15px; /* 내부 공간 확보를 위해 여백 최적화 */
+            -webkit-font-smoothing: antialiased;
+            padding: 15px;
         }
 
         /* 메인 슬라이드 캔버스 */
         .slide-container {
             width: 100%;
             max-width: 1280px;
-            min-height: auto; /* 타이트하고 왜곡 없는 핏을 위해 높이 유연화 */
-            /* 은은한 네이비 빛이 도는 다크 스페이스 배경 */
+            min-height: auto;
             background: linear-gradient(145deg, #111827 0%, #0f172a 50%, #1e1b4b 100%);
             display: flex;
             flex-direction: column;
@@ -53,7 +51,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* 헤더 영역 - 높이를 대폭 줄여 상단 공간 확보 */
+        /* 헤더 영역 */
         .header-bar {
             width: 100%;
             background-color: rgba(0, 0, 0, 0.2);
@@ -63,7 +61,7 @@
             display: flex;
             align-items: center;
             justify-content: center; 
-            height: 40px; /* 52px에서 40px로 축소 */
+            height: 40px;
             flex-shrink: 0;
             z-index: 10;
             position: relative;
@@ -71,7 +69,7 @@
 
         .header-title {
             color: #e2e8f0; 
-            font-size: 13px; /* 가독성을 해치지 않는 선에서 슬림하게 축소 */
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 4px; 
             margin: 0;
@@ -85,38 +83,35 @@
             transform: scale(1.02);
         }
 
-        /* 중앙 테이블 영역 (배경을 투명하게 날려 미니멀리즘 강조) */
+        /* 중앙 테이블 영역 */
         .bookmark-grid {
             margin: 5px 10px 10px 10px; 
             display: flex;
-            gap: 15px; /* 사이 공간을 밀착시켜 세로 높이 축소 */
+            gap: 15px;
             padding: 10px 20px;
             flex-grow: 1;
-            /* 창 분할 및 축소 시 유연하게 감싸기(wrap) 적용 */
             flex-wrap: wrap; 
         }
 
         .column {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* 카테고리간 여백 축소 */
-            /* 기본 3단 배열 */
+            gap: 15px;
             width: calc((100% - 30px) / 3);
         }
 
-        /* 카드 형식의 글래스모피즘 제거 -> 투명하고 미니멀하게 */
         .category-box {
             display: flex;
             flex-direction: column;
-            gap: 8px; /* 버튼과 타이틀 밀착 */
+            gap: 8px;
             background: transparent; 
             border: none;
             box-shadow: none;
         }
 
         .cat-title {
-            color: #94a3b8; /* 세련된 실버 그레이 */
-            font-size: 12px; /* 14px에서 12px로 슬림화 */
+            color: #94a3b8; 
+            font-size: 12px;
             font-weight: 600; 
             border-bottom: 1px solid rgba(148, 163, 184, 0.12); 
             padding-bottom: 4px;
@@ -128,13 +123,12 @@
         .links-wrapper {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px 6px; /* 줄간격 및 여백을 밀접하게 줄임 */
+            gap: 6px 6px;
             align-content: flex-start;
         }
 
-        /* ★ 버튼 전용 글래스모피즘 (유리 질감) */
+        /* 버튼 전용 글래스모피즘 */
         .link-btn {
-            /* CSS 변수를 활용한 동적 컬러 시스템 (기본값 설정) */
             --btn-border: rgba(255, 255, 255, 0.07);
             --btn-glow: rgba(129, 140, 248, 0.5);
             --btn-glow-shadow: rgba(129, 140, 248, 0.25);
@@ -142,44 +136,38 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            /* 두께 및 상하 패딩을 정밀 조율하여 텍스트 왜곡 차단 및 슬림화 */
             padding: 3px 8px;
-            /* 반투명한 유리 배경 */
             background-color: rgba(255, 255, 255, 0.03); 
-            /* 배경 흐림 효과로 고급스러움 극대화 */
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            color: #cbd5e1; /* 부드러운 화이트/실버 */
-            font-size: 12px; /* 깔끔하고 압축된 프리미엄 텍스트 디자인 */
+            color: #cbd5e1;
+            font-size: 12px;
             font-weight: 500;
             border-radius: 5px; 
             cursor: pointer;
-            
-            /* CSS 변수 적용 */
             border: 1px solid var(--btn-border); 
-            
-            /* 크기는 변하지 않으면서 부드럽게 위치, 색상, 그림자만 변하는 고급 트랜지션 */
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
                         background-color 0.3s ease, 
                         color 0.3s ease, 
-                        border-color 0.3s ease,
+                        border-color 0.3s ease, 
                         box-shadow 0.3s ease;
             user-select: none;
             white-space: nowrap;
         }
 
-        /* ★ 커스텀 브랜드 색상 유틸리티 클래스 */
-        .color-logos { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(59, 130, 246, 0.7); --btn-glow-shadow: rgba(59, 130, 246, 0.35); }
-        .color-daum { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(250, 204, 21, 0.7); --btn-glow-shadow: rgba(250, 204, 21, 0.35); }
-        .color-youtube { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(239, 68, 68, 0.7); --btn-glow-shadow: rgba(239, 68, 68, 0.35); }
-        .color-google { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(156, 163, 175, 0.7); --btn-glow-shadow: rgba(156, 163, 175, 0.35); }
-        .color-naver { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(34, 197, 94, 0.7); --btn-glow-shadow: rgba(34, 197, 94, 0.35); }
-        .color-auphonic { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(225, 29, 72, 0.7); --btn-glow-shadow: rgba(225, 29, 72, 0.35); }
-        .color-gemini { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(0, 191, 255, 0.8); --btn-glow-shadow: rgba(0, 191, 255, 0.4); }
-        .color-saejecheon { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(132, 204, 22, 0.7); --btn-glow-shadow: rgba(132, 204, 22, 0.35); }
-        .color-jumin { --btn-border: rgba(255, 255, 255, 0.07); --btn-glow: rgba(249, 115, 22, 0.7); --btn-glow-shadow: rgba(249, 115, 22, 0.35); }
+        /* 커스텀 브랜드 색상 유틸리티 클래스 */
+        .color-jupum { --btn-border: rgba(245, 158, 11, 0.5); --btn-glow: rgba(245, 158, 11, 0.85); --btn-glow-shadow: rgba(245, 158, 11, 0.4); }
+        .color-logos { --btn-border: rgba(59, 130, 246, 0.45); --btn-glow: rgba(96, 165, 250, 0.85); --btn-glow-shadow: rgba(59, 130, 246, 0.4); }
+        .color-daum { --btn-border: rgba(253, 224, 71, 0.55); --btn-glow: rgba(250, 204, 21, 0.9); --btn-glow-shadow: rgba(250, 204, 21, 0.45); }
+        .color-youtube { --btn-border: rgba(239, 68, 68, 0.55); --btn-glow: rgba(248, 113, 113, 0.85); --btn-glow-shadow: rgba(239, 68, 68, 0.45); }
+        .color-google { --btn-border: rgba(226, 232, 240, 0.45); --btn-glow: rgba(255, 255, 255, 0.85); --btn-glow-shadow: rgba(255, 255, 255, 0.35); }
+        .color-naver { --btn-border: rgba(34, 197, 94, 0.45); --btn-glow: rgba(74, 222, 128, 0.85); --btn-glow-shadow: rgba(34, 197, 94, 0.4); }
+        .color-auphonic { --btn-border: rgba(168, 85, 247, 0.55); --btn-glow: rgba(217, 70, 239, 0.85); --btn-glow-shadow: rgba(168, 85, 247, 0.45); }
+        .color-gemini { --btn-border: rgba(14, 165, 233, 0.5); --btn-glow: rgba(56, 189, 248, 0.85); --btn-glow-shadow: rgba(14, 165, 233, 0.4); }
+        .color-saejecheon { --btn-border: rgba(132, 204, 22, 0.45); --btn-glow: rgba(163, 230, 53, 0.85); --btn-glow-shadow: rgba(132, 204, 22, 0.4); }
+        .color-jumin { --btn-border: rgba(249, 115, 22, 0.5); --btn-glow: rgba(251, 146, 60, 0.85); --btn-glow-shadow: rgba(249, 115, 22, 0.4); }
 
-        /* ★ 제미나이 젬스 전용 스타일 */
+        /* 제미나이 젬스 전용 스타일 */
         .color-gemini-gems {
             background-color: rgba(255, 255, 255, 0.02) !important;
             color: #94a3b8;
@@ -188,7 +176,7 @@
             padding: 5px 12px !important; 
         }
 
-        /* ★ 떨림 없는 프리미엄 호버 이펙트 */
+        /* 호버 이펙트 */
         @media (hover: hover) {
             .link-btn:hover {
                 background-color: rgba(255, 255, 255, 0.1); 
@@ -210,7 +198,7 @@
             }
         }
 
-        /* ★ 하단에 컴팩트하게 정렬되는 제미나이 젬스 독립 테이블 섹션 */
+        /* Gemini Gems 섹션 */
         .gems-section {
             width: 100%;
             background: rgba(0, 0, 0, 0.25);
@@ -265,239 +253,7 @@
             overflow: hidden; 
         }
 
-        /* ★ 네이버 사전 전용 슬림 & 미니멀 워크스페이스 클래스 */
-        .ai-workspace-section {
-            width: 100%;
-            background: rgba(4, 20, 15, 0.65); 
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(4, 120, 87, 0.25); 
-            padding: 16px 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: auto; 
-            z-index: 5;
-        }
-
-        .workspace-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(4, 120, 87, 0.2); 
-            padding-bottom: 6px;
-            margin-bottom: 2px;
-        }
-
-        .workspace-title {
-            color: #059669; 
-            font-size: 13.5px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-            cursor: pointer; 
-            transition: color 0.25s ease;
-        }
-
-        .workspace-title:hover {
-            color: #34d399; 
-        }
-
-        /* ★ 고급스럽고 세련되게 다듬어진 미세 펄스 아이콘 */
-        .breathing-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #10b981; 
-            border-radius: 50%;
-            animation: pulse-green-refined 3.5s infinite ease-in-out;
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        @keyframes pulse-green-refined {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
-
-        /* 프리미엄 검색창 폼 */
-        .search-container {
-            display: flex;
-            width: 100%;
-            gap: 8px;
-            position: relative;
-        }
-
-        .search-input {
-            flex-grow: 1;
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(4, 120, 87, 0.2);
-            border-radius: 6px;
-            padding: 8px 14px;
-            color: #e2e8f0;
-            font-family: inherit;
-            font-size: 13px;
-            outline: none;
-            transition: all 0.25s ease;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .search-input:focus {
-            border-color: rgba(16, 185, 129, 0.35);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5),
-                        0 0 8px rgba(16, 185, 129, 0.1);
-            background: rgba(0, 0, 0, 0.55);
-        }
-
-        .search-action-btn.btn-search {
-            background: rgba(6, 78, 59, 0.2); 
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            color: #a7f3d0; 
-            font-weight: 500;
-            font-size: 12.5px;
-            padding: 0 24px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-            white-space: nowrap;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            position: relative;
-        }
-
-        .search-action-btn.btn-search:hover {
-            background-color: rgba(4, 15, 10, 0.8) !important; 
-            border-color: rgba(16, 185, 129, 0.15) !important; 
-            color: #10b981 !important; 
-            transform: translateY(1.5px) !important; 
-            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.95), 
-                        inset 0 1px 3px rgba(0, 0, 0, 0.8), 
-                        0 1px 0 rgba(255, 255, 255, 0.03) !important;
-        }
-
-        .search-action-btn.btn-search:active {
-            transform: translateY(2.5px) !important;
-            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.98) !important;
-        }
-
-        /* 결과 노출 뷰포트 영역 */
-        .answer-viewport {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(4, 120, 87, 0.08);
-            border-radius: 6px;
-            padding: 12px 16px;
-            min-height: 50px;
-            max-height: 380px; 
-            overflow-y: auto;
-            color: #cbd5e1;
-            font-size: 12.5px;
-            line-height: 1.5;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .answer-content { animation: fadeIn 0.3s ease forwards; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 단어장 태그 칩 스타일 */
-        .voca-tag-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            align-items: center;
-        }
-
-        .voca-tag {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 11.5px;
-            color: #cbd5e1;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .voca-tag:hover {
-            background: rgba(4, 120, 87, 0.15);
-            border-color: rgba(4, 120, 87, 0.35);
-            color: #ffffff;
-        }
-
-        .voca-tag-delete {
-            color: #ef4444;
-            font-size: 10px;
-            display: inline-block;
-            cursor: pointer;
-            padding: 1px 3px;
-            border-radius: 2px;
-            transition: background 0.2s;
-        }
-
-        .voca-tag-delete:hover { background: rgba(239, 68, 68, 0.2); }
-
-        .voca-clear-btn {
-            background: transparent;
-            border: none;
-            color: #64748b;
-            font-size: 11px;
-            cursor: pointer;
-            text-decoration: underline;
-            margin-left: auto;
-            padding: 2px 6px;
-            border-radius: 4px;
-            transition: color 0.2s, background 0.2s;
-        }
-
-        .voca-clear-btn:hover {
-            color: #f87171;
-            background: rgba(239, 68, 68, 0.05);
-        }
-
-        /* 로더 애니메이션 */
-        .ai-loader {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #059669;
-            font-weight: 400;
-        }
-
-        .pulse-bubble {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: #059669;
-            animation: bubble-bounce 1.4s infinite ease-in-out both;
-        }
-
-        .pulse-bubble-1 { animation-delay: -0.32s; }
-        .pulse-bubble-2 { animation-delay: -0.16s; }
-        .pulse-bubble-3 { animation-delay: 0s; }
-
-        @keyframes bubble-bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1.0); }
-        }
-
-        /* ========================================================
-           ★ 창 화면 분할 대응 (테블릿/노트북 중간 크기)
-           ======================================================== */
+        /* 태블릿 반응형 대응 */
         @media (max-width: 1024px) {
             .column {
                 width: calc((100% - 15px) / 2);
@@ -508,9 +264,7 @@
             }
         }
 
-        /* ========================================================
-           ★ 모바일 전용 환경 (다크 스페이스 테마 연장)
-           ======================================================== */
+        /* 모바일 반응형 */
         @media (max-width: 768px) {
             body {
                 padding: 0;
@@ -568,30 +322,13 @@
             }
 
             .gems-section {
-                padding: 12px 15px 12px 15px;
+                padding: 12px 15px 20px 15px;
                 background: rgba(0, 0, 0, 0.4);
             }
 
             .gems-section .color-gemini-gems {
                 font-size: 14px !important;
                 padding: 6px 12px !important;
-            }
-
-            .ai-workspace-section {
-                padding: 15px 15px 25px 15px;
-                background: rgba(15, 23, 42, 0.9);
-            }
-
-            .search-container {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .search-action-btn.btn-search {
-                width: 100%;
-                height: 38px;
-                font-size: 13px;
-                transform: none !important; 
             }
         }
     </style>
@@ -602,17 +339,16 @@
         
         <!-- 최상단 헤더 -->
         <div class="header-bar">
-            <!-- 클릭 시 메인 경로(ik)로 전환되도록 이벤트 매핑 -->
             <h1 class="header-title" onclick="window.location.href='https://koindori-en.github.io/ik/'">IK BOOKMARK</h1>
         </div>
 
-        <!-- 내부 투명 미니멀 테이블 영역 (메인 3컬럼) -->
+        <!-- 내부 테이블 영역 (아래2 버튼 목록 적용) -->
         <div class="bookmark-grid">
             
             <!-- Column 1 -->
             <div class="column">
                 <div class="category-box">
-                    <h2 class="cat-title">디자인 및 영상</h2>
+                    <h2 class="cat-title">CREATIVE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://2colors.colorion.co/', '_blank')">Two Color</div>
                         <div class="link-btn" onclick="window.open('https://color.adobe.com/ko/', '_blank')">Adobe Color</div>
@@ -629,12 +365,12 @@
                         <div class="link-btn" onclick="window.open('https://app.immersity.ai/', '_blank')">Leia Pix</div>
                         <div class="link-btn" onclick="window.open('https://www.motionvfx.com/', '_blank')">Motionvfx</div>
                         <div class="link-btn" onclick="window.open('https://mobbin.com/', '_blank')">mobbin</div>
-                        <div class="link-btn" onclick="window.open('https://www.jupum.com/', '_blank')">주품디자인</div>
+                        <div class="link-btn color-jupum" onclick="window.open('https://www.jupum.com/', '_blank')">주품디자인</div>
                     </div>
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">금융 및 행정</h2>
+                    <h2 class="cat-title">PUBLIC</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://www.shinhan.com/index.jsp', '_blank')">신한은행</div>
                         <div class="link-btn" onclick="window.open('https://www.kbstar.com/', '_blank')">국민은행</div>
@@ -647,7 +383,7 @@
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">AI 플랫폼</h2>
+                    <h2 class="cat-title">AI PLATFORMS</h2>
                     <div class="links-wrapper">
                         <div class="link-btn color-gemini" onclick="window.open('https://gemini.google.com/app', '_blank')">Gemini</div>
                         <div class="link-btn" onclick="window.open('https://notebooklm.google.com/', '_blank')">Notebook LM</div>
@@ -663,13 +399,35 @@
             <!-- Column 2 -->
             <div class="column">
                 <div class="category-box">
-                    <h2 class="cat-title">기독교 및 성경</h2>
+                    <h2 class="cat-title">CHRISTIAN</h2>
+                    <div class="links-wrapper">
+                        <div class="link-btn color-logos" onclick="window.open('https://kr.logos.com/', '_blank')">로고스바이블</div>
+                        <div class="link-btn" onclick="window.open('https://www.kidok.com/member/login.html?backUrl=/bbs/list.html?table=bbs_9', '_blank')">기독신문</div>
+                        <div class="link-btn" onclick="window.open('http://www.holybible.or.kr/', '_blank')">홀리바이블</div>
+                        <div class="link-btn" onclick="window.open('https://hangl.net/korbible', '_blank')">한글성경</div>
+                        <div class="link-btn" onclick="window.open('https://www.sefaria.org/', '_blank')">타르굼</div>
+                        <div class="link-btn" onclick="window.open('http://www.iktinos.org/main/', '_blank')">신학정보원</div>
+                        <div class="link-btn" onclick="window.open('https://www.csu.ac.kr/', '_blank')">대한성서공회</div>
+                        <div class="link-btn" onclick="window.open('https://www.csu.ac.kr/', '_blank')">총신대학교</div>
+                        <div class="link-btn" onclick="window.open('https://dongtanms.kr/faith_resources/4204', '_blank')">교독문</div>
+                        <div class="link-btn" onclick="window.open('https://ejoongang.net/xe/', '_blank')">부산중앙교회</div>
+                        <div class="link-btn" onclick="window.open('https://www.gapck.org/', '_blank')">총회</div>
+                        <div class="link-btn" onclick="window.open('https://blog.naver.com/lovenor', '_blank')">PN4N</div>
+                        <div class="link-btn" onclick="window.open('https://www.billmounce.com/biblicalgreek/track1', '_blank')">헬라어공부</div>
+                        <div class="link-btn" onclick="window.open('https://sum.su.or.kr:8888/bible/today', '_blank')">매일성경</div>
+                        <div class="link-btn" onclick="window.open('http://www.cbdong.co.kr/', '_blank')">충북동노회</div>
+                        <div class="link-btn" onclick="window.open('https://xn--9d0b456bbev81e.com/', '_blank')">씨앗교회</div>
+                        <div class="link-btn" onclick="window.open('https://rich-church.joobo.kr/', '_blank')">리치교회</div>
+                    </div>
+                </div>
+
+                <div class="category-box">
+                    <h2 class="cat-title">COMMERCE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://www.daum.net/', '_blank')">다음</div>
                         <div class="link-btn" onclick="window.open('https://www.nate.com/', '_blank')">네이트</div>
                         <div class="link-btn color-daum" onclick="window.open('https://www.enuri.com/', '_blank')">에누리</div>
                         <div class="link-btn" onclick="window.open('https://ko.aliexpress.com/', '_blank')">알리</div>
-                        <div class="link-btn" onclick="window.open('https://www.ebay.com/', '_blank')">이베이</div>
                         <div class="link-btn" onclick="window.open('https://www.amazon.com/', '_blank')">아마존</div>
                         <div class="link-btn" onclick="window.open('https://www.yes24.com/Main/default.aspx', '_blank')">예스 24</div>
                         <div class="link-btn" onclick="window.open('https://www.kyobobook.co.kr/', '_blank')">교보문고</div>
@@ -677,32 +435,14 @@
                         <div class="link-btn" onclick="window.open('https://www.halfclub.com/home', '_blank')">하프클럽</div>
                         <div class="link-btn" onclick="window.open('https://www.11st.co.kr/', '_blank')">11번가</div>
                         <div class="link-btn" onclick="window.open('https://www.gmarket.co.kr/', '_blank')">지마켓</div>
+                        <div class="link-btn" onclick="window.open('https://www.ppurio.com/', '_blank')">뿌리오</div>
                         <div class="link-btn" onclick="window.open('https://github.com/', '_blank')">깃허브</div>
                         <div class="link-btn" onclick="window.open('https://www.ilovepdf.com/ko/pdf_to_jpg', '_blank')">PDF</div>
                     </div>
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">쇼핑 및 커머스</h2>
-                    <div class="links-wrapper">
-                        <div class="link-btn" onclick="window.open('https://www.daum.net/', '_blank')">다음</div>
-                        <div class="link-btn" onclick="window.open('https://www.nate.com/', '_blank')">네이트</div>
-                        <div class="link-btn color-daum" onclick="window.open('https://www.enuri.com/', '_blank')">에누리</div>
-                        <div class="link-btn" onclick="window.open('https://ko.aliexpress.com/', '_blank')">알리</div>
-                        <div class="link-btn" onclick="window.open('https://www.amazon.com/', '_blank')">아마존</div>
-                        <div class="link-btn" onclick="window.open('https://www.yes24.com/Main/default.aspx', '_blank')">예스 24</div>
-                        <div class="link-btn" onclick="window.open('https://www.kyobobook.co.kr/', '_blank')">교보문고</div>
-                        <div class="link-btn" onclick="window.open('https://www.coupang.com/', '_blank')">쿠팡</div>
-                        <div class="link-btn" onclick="window.open('https://www.halfclub.com/home', '_blank')">하프클럽</div>
-                        <div class="link-btn" onclick="window.open('https://www.11st.co.kr/', '_blank')">11번가</div>
-                        <div class="link-btn" onclick="window.open('https://www.gmarket.co.kr/', '_blank')">지마켓</div>
-                        <div class="link-btn" onclick="window.open('https://github.com/', '_blank')">깃허브</div>
-                        <div class="link-btn" onclick="window.open('https://www.ilovepdf.com/ko/pdf_to_jpg', '_blank')">PDF</div>
-                    </div>
-                </div>
-
-                <div class="category-box">
-                    <h2 class="cat-title">개인 접속</h2>
+                    <h2 class="cat-title">WORKSPACE</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('http://192.168.0.10/', '_blank')">CCTV</div>
                         <div class="link-btn" onclick="window.open('https://192.168.0.43/', '_blank')">BeeStation</div>
@@ -716,7 +456,7 @@
             <!-- Column 3 -->
             <div class="column">
                 <div class="category-box">
-                    <h2 class="cat-title">미디어의 세계</h2>
+                    <h2 class="cat-title">ENTERTAINMENT</h2>
                     <div class="links-wrapper">
                         <div class="link-btn" onclick="window.open('https://www.netflix.com/kr/', '_blank')">NETFLIX</div>
                         <div class="link-btn color-youtube" onclick="window.open('https://www.youtube.com/', '_blank')">유튜브</div>
@@ -738,8 +478,9 @@
                 </div>
 
                 <div class="category-box">
-                    <h2 class="cat-title">포털 및 검색_구글</h2>
+                    <h2 class="cat-title">PORTAL</h2>
                     <div class="links-wrapper">
+                        <!-- 구글 관련 링크 -->
                         <div class="link-btn color-google" onclick="window.open('https://www.google.com/', '_blank')">구글</div>
                         <div class="link-btn" onclick="window.open('https://earth.google.com/web/', '_blank')">어스</div>
                         <div class="link-btn" onclick="window.open('https://drive.google.com/drive/my-drive', '_blank')">드라이브</div>
@@ -749,12 +490,7 @@
                         <div class="link-btn" onclick="window.open('https://calendar.google.com/calendar/u/0/r', '_blank')">캘린더</div>
                         <div class="link-btn" onclick="window.open('https://chromewebstore.google.com/category/extensions?hl=ko', '_blank')">웹스토어</div>
                         <div class="link-btn" onclick="window.open('https://mail.google.com/mail/u/0/#inbox', '_blank')">지메일</div>
-                    </div>
-                </div>
-
-                <div class="category-box">
-                    <h2 class="cat-title">포털 및 검색_네이버</h2>
-                    <div class="links-wrapper">
+                        <!-- 네이버 관련 링크 -->
                         <div class="link-btn color-naver" onclick="window.open('https://www.naver.com/', '_blank')">네이버</div>
                         <div class="link-btn" onclick="window.open('https://map.naver.com/p/', '_blank')">지도</div>
                         <div class="link-btn" onclick="window.open('https://www.band.us/home', '_blank')">밴드</div>
@@ -767,7 +503,7 @@
 
         </div>
 
-        <!-- ★ 전체 그리드 영역 하단에 분리 및 재구성한 프리미엄 'Gemini Gems' 섹션 -->
+        <!-- Gemini Gems 섹션 (유지) -->
         <div class="gems-section">
             <div class="gems-header">
                 <h2 class="gems-title">Gemini Gems</h2>
@@ -789,643 +525,7 @@
             </div>
         </div>
 
-        <!-- ★ 네이버 사전 실시간 검색 및 단어장 통합 워크스페이스 -->
-        <div class="ai-workspace-section">
-            <div class="workspace-header">
-                <h2 class="workspace-title" onclick="window.open('https://en.dict.naver.com/#/main', '_blank')">
-                    <span class="breathing-dot"></span>
-                    Dictionary
-                </h2>
-            </div>
-            
-            <!-- 단일 검색 폼 구성 (고급 다크 그린 테마 버튼 연동) -->
-            <div class="search-container">
-                <input type="text" class="search-input" id="vocaQueryInput" placeholder="검색할 영단어, 한글 뜻, 또는 문장을 입력하세요... (Enter)" onkeypress="handleKeyPress(event)">
-                <button class="search-action-btn btn-search" onclick="searchWord()">
-                    <span>검색</span>
-                </button>
-            </div>
-
-            <!-- 단어장 & 실시간 검색 결과 통합 출력 공간 -->
-            <div class="answer-viewport active" id="vocaAnswerViewport">
-                <!-- 자바스크립트로 검색 결과 및 최근 검색어가 여기에 동적으로 들어갑니다. -->
-            </div>
-        </div>
-
     </div>
-
-    <script>
-        // 최근 단어 히스토리를 저장할 변수 (localStorage 로딩)
-        let recentWords = [];
-
-        // 웹페이지 초기화 시 단어장 복원 및 기본 데이터 렌더링
-        window.addEventListener('DOMContentLoaded', () => {
-            loadRecentWords();
-            renderRecentWords();
-        });
-
-        // 엔터키 처리
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                searchWord();
-            }
-        }
-
-        /* 
-         * [한자어 매핑 헬퍼 함수] 
-         * 한국어 단어가 주어지면 Wiktionary API를 조회하여 한자를 추출합니다.
-         * (괄호 없는 "어원: 한자 銀行" 형태의 텍스트도 정밀하게 추적하여 추출)
-         */
-        async function getHanjaFromWiktionary(koreanWord) {
-            try {
-                const url = `https://ko.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(koreanWord)}&prop=text&format=json&origin=*`;
-                const res = await fetch(url);
-                const data = await res.json();
-                
-                if (data && data.parse && data.parse.text) {
-                    const html = data.parse.text['*'];
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    
-                    // 1순위: 괄호 안의 한자 매칭 (가장 전형적인 표기 방식)
-                    const paragraphs = doc.querySelectorAll('p, li');
-                    for (let p of paragraphs) {
-                        const text = p.textContent;
-                        const match = text.match(/\(([^)]*[\u4e00-\u9fa5]+[^)]*)\)/);
-                        if (match) {
-                            // 한자만 추출하여 길이가 검색어와 일치하는지 확인
-                            const hanjaOnly = match[1].replace(/[^\u4e00-\u9fa5]/g, '');
-                            if (hanjaOnly.length === koreanWord.length) {
-                                return hanjaOnly;
-                            }
-                        }
-                    }
-
-                    // 2순위: "어원: 한자 銀行" 처럼 괄호 없이 노출된 본문 텍스트 전체 스캔
-                    const allText = doc.body.textContent;
-                    const hanjaMatches = allText.match(/[\u4e00-\u9fa5]+/g);
-                    if (hanjaMatches) {
-                        for (let hanja of hanjaMatches) {
-                            if (hanja.length === koreanWord.length) {
-                                return hanja;
-                            }
-                        }
-                    }
-                }
-            } catch (e) {
-                console.error("Hanja extraction failed", e);
-            }
-            return null;
-        }
-
-        /*
-         * [개별 한자 훈음(뜻/음) 조회 헬퍼 함수] - 대폭 강화된 정밀 파서
-         * 위키낱말사전의 다양한 구조(표, 본문 어원, 리스트 등)를 다각도로 스캔하여 가장 정확한 훈음을 100%에 가깝게 추출합니다.
-         */
-        async function getHanjaHuneum(hanja, sound) {
-            try {
-                const url = `https://ko.wiktionary.org/w/api.php?action=parse&page=${encodeURIComponent(hanja)}&prop=text&format=json&origin=*`;
-                const res = await fetch(url);
-                const data = await res.json();
-                
-                if (data && data.parse && data.parse.text) {
-                    const html = data.parse.text['*'];
-                    const doc = new DOMParser().parseFromString(html, 'text/html');
-                    
-                    let foundMeaning = '';
-
-                    // 1단계: 가장 명확한 "음훈: 다닐 행, 항렬 항" 패턴을 텍스트 전체에서 우선 추출
-                    const allText = doc.body.textContent.replace(/\n/g, ' ');
-                    const umhunMatch = allText.match(/(?:음훈|훈음|뜻과\s*음|뜻과\s*소리)\s*[:：]\s*([가-힣\s,]{2,40})/);
-                    if (umhunMatch) {
-                        const umhunStr = umhunMatch[1]; // 예: "다닐 행, 항렬 항"
-                        const pairs = umhunStr.split(/[,]/);
-                        for (let pair of pairs) {
-                            pair = pair.trim();
-                            const words = pair.split(/\s+/);
-                            if (words.length >= 2) {
-                                const pairSound = words[words.length - 1]; // "행"
-                                const pairMeaning = words.slice(0, words.length - 1).join(' '); // "다닐"
-                                // 사용자가 검색한 글자 음과 일치하면 즉시 채택 (예: '행'인지 '항'인지 판별)
-                                if (pairSound === sound) {
-                                    foundMeaning = pairMeaning;
-                                    break;
-                                }
-                            } else if (words.length === 1 && pair.endsWith(sound)) {
-                                const pairMeaning = pair.substring(0, pair.length - sound.length).trim();
-                                if (pairMeaning) {
-                                    foundMeaning = pairMeaning;
-                                    break;
-                                }
-                            }
-                        }
-                        // 정확히 매칭 안되더라도 첫 번째 뜻을 임시 보관
-                        if (!foundMeaning && pairs.length > 0) {
-                            const words = pairs[0].trim().split(/\s+/);
-                            if (words.length >= 2) foundMeaning = words.slice(0, words.length - 1).join(' ');
-                        }
-                    }
-
-                    // 2단계: 표(Table) 내부의 훈(訓), 음(音) 명시 테이블 정밀 분석 (1단계 실패 시)
-                    if (!foundMeaning) {
-                        const tables = doc.querySelectorAll('table');
-                        for (let table of tables) {
-                            const rows = table.querySelectorAll('tr');
-                            let tempHun = '';
-                            let tempEum = '';
-
-                            for (let row of rows) {
-                                const cells = row.querySelectorAll('th, td');
-                                for (let i = 0; i < cells.length; i++) {
-                                    const text = cells[i].textContent.replace(/\s+/g, '');
-                                    if ((text.includes('훈(訓)') || text === '훈') && (i + 1 < cells.length)) {
-                                        tempHun = cells[i + 1].textContent.split(/[,;]/)[0].replace(/[^\uac00-\ud7a3\s]/g, '').trim();
-                                    }
-                                    if ((text.includes('음(音)') || text === '음') && (i + 1 < cells.length)) {
-                                        tempEum = cells[i + 1].textContent.replace(/[^\uac00-\ud7a3\s,]/g, '').trim();
-                                    }
-                                }
-                            }
-                            if (tempHun) {
-                                if (tempEum.includes(sound) || !tempEum || tempEum === sound) {
-                                    foundMeaning = tempHun;
-                                    break;
-                                } else if (!foundMeaning) {
-                                    foundMeaning = tempHun;
-                                }
-                            }
-                        }
-                    }
-
-                    // 3단계: 본문 중 "琢 (쫄 탁)" 처럼 괄호 안에 병기된 직관적 표기 추출
-                    if (!foundMeaning) {
-                        const boldTags = doc.querySelectorAll('b, strong, p');
-                        for (let b of boldTags) {
-                            if (b.textContent.includes(hanja)) {
-                                const parentText = b.parentElement ? b.parentElement.textContent : b.textContent;
-                                const bracketMatch = parentText.match(new RegExp(`${hanja}\\s*\\(([^)]+)\\)`));
-                                if (bracketMatch) {
-                                    const insideBrackets = bracketMatch[1]; // "쫄 탁" 또는 "다닐 행/항렬 항"
-                                    const parts = insideBrackets.replace(/(?:음훈|훈음):\s*/, '').split(/[\/,\-]/);
-                                    for(let part of parts) {
-                                        part = part.trim();
-                                        const words = part.split(/\s+/);
-                                        if(words.length >= 2 && words[words.length-1] === sound) {
-                                            foundMeaning = words.slice(0, words.length - 1).join(' ');
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            if (foundMeaning) break;
-                        }
-                    }
-
-                    // 4단계: 뜻풀이 목록(1. 가다 2. 다니다)에서 동사/형용사 변환 유추 (최후의 보루)
-                    if (!foundMeaning) {
-                        const listItems = doc.querySelectorAll('ol > li');
-                        for (let li of listItems) {
-                            let meaning = li.textContent.split(/[.,;\(]/)[0].trim();
-                            meaning = meaning.replace(/[^\uac00-\ud7a3\s]/g, '').trim(); 
-                            
-                            if (meaning && meaning.length > 0 && meaning.length < 15) {
-                                if (meaning.endsWith('다')) {
-                                    if (meaning === '보다') meaning = '볼';
-                                    else if (meaning === '다니다') meaning = '다닐';
-                                    else if (meaning === '행하다') meaning = '행할';
-                                    else if (meaning === '쪼다') meaning = '쫄';
-                                    else if (meaning === '다듬다') meaning = '다듬을';
-                                    else if (meaning.endsWith('없다')) meaning = meaning.replace('없다', '없을');
-                                    else if (meaning.endsWith('하다')) meaning = meaning.replace('하다', '할');
-                                    else if (meaning.endsWith('이다')) meaning = meaning.replace('이다', '일');
-                                    else if (meaning.endsWith('르다')) meaning = meaning.replace('르다', '를');
-                                    else meaning = meaning.replace(/다$/, '을');
-                                }
-                                foundMeaning = meaning;
-                                break;
-                            }
-                        }
-                    }
-
-                    // 최종 출력 마크업 생성
-                    if (foundMeaning) {
-                        return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">${foundMeaning} ${sound}</span>)</span>`;
-                    }
-                }
-            } catch (e) { 
-                console.error("Hanja detail parse error", e); 
-            }
-            
-            // 모든 파싱을 실패했을 때의 안전장치 (소리만이라도 괄호 안에 출력)
-            return `<span style="display:inline-block; margin-right:6px;">${hanja}(<span style="color:#94a3b8;">${sound}</span>)</span>`;
-        }
-
-        // 검색 처리 핵심 메소드 (외부 API 연동으로 에러 없는 실시간 번역 + 영단어 정밀 조회 및 유의어/반의어 수집)
-        async function searchWord() {
-            const inputField = document.getElementById('vocaQueryInput');
-            const query = inputField.value.trim();
-            
-            if (!query) {
-                inputField.focus();
-                return;
-            }
-
-            // 단어장에 우선 기록 및 로컬 보존
-            addWordToStorage(query);
-
-            const viewport = document.getElementById('vocaAnswerViewport');
-
-            // 1단계: 로딩 스피너 작동
-            viewport.innerHTML = `
-                <div class="ai-loader" style="display: flex; align-items: center; justify-content: center; min-height: 80px; gap: 8px; width:100%;">
-                    <div class="pulse-bubble pulse-bubble-1"></div>
-                    <div class="pulse-bubble pulse-bubble-2"></div>
-                    <div class="pulse-bubble pulse-bubble-3"></div>
-                    <span style="font-size: 13px; color: #059669; font-weight: 500; margin-left: 4px;">사전 정보 검색 중...</span>
-                </div>
-            `;
-
-            try {
-                // 한글 여부 확인
-                const isKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(query);
-                const targetLang = isKorean ? 'en' : 'ko';
-                
-                let hanjaHtmlBlock = ''; // 한자어인 경우 삽입될 HTML 블록
-
-                // ★ 신규 기능: 한글 검색 시 한자어 분석 및 훈음 추출 로직
-                if (isKorean) {
-                    const hanjaWord = await getHanjaFromWiktionary(query);
-                    
-                    if (hanjaWord && hanjaWord.length === query.length) {
-                        // 병렬로 각 한자의 훈음을 고속 추출
-                        const hanjaPromises = [];
-                        for (let i = 0; i < hanjaWord.length; i++) {
-                            hanjaPromises.push(getHanjaHuneum(hanjaWord[i], query[i]));
-                        }
-                        const hanjaDetails = await Promise.all(hanjaPromises);
-                        
-                        // 다크 테마 및 그린 워크스페이스에 어울리는 고급 UI 구성 (요청하신 포맷으로 가로 나열)
-                        hanjaHtmlBlock = `
-                            <div style="margin-top: 10px; padding: 10px 14px; background: rgba(4, 120, 87, 0.15); border: 1px solid rgba(4, 120, 87, 0.35); border-radius: 6px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);">
-                                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-                                    <span style="font-size: 10.5px; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.15); padding: 2px 6px; border-radius: 3px; letter-spacing: 1px;">한자어 풀이</span>
-                                </div>
-                                <div style="font-size: 16px; font-weight: 600; color: #ffffff; letter-spacing: 0.5px; line-height: 1.4;">
-                                    ${hanjaDetails.join('')}
-                                </div>
-                            </div>
-                        `;
-                    }
-                }
-
-                // 구글 gtx 엔진을 통한 정밀 실시간 번역 API 호출 (검색어 자체의 일차적 대역어 확보)
-                const translateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(query)}`;
-                const translateRes = await fetch(translateUrl);
-                const translateData = await translateRes.json();
-                const translationText = translateData[0].map(item => item[0]).join('');
-
-                // 영문 추출 (영어 사전용)
-                let englishWord = isKorean ? translationText.trim().split(' ')[0] : query;
-                englishWord = englishWord.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-
-                let dictHtml = '';
-                let synonymsList = [];
-                let antonymsList = [];
-
-                // 영어 철자가 포함된 경우 무료 사전 API(Wiktionary 기반) 추가 조회하여 디테일 향상
-                if (/^[a-zA-Z\s\-]+$/.test(englishWord)) {
-                    try {
-                        const dictUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(englishWord.toLowerCase())}`;
-                        const dictRes = await fetch(dictUrl);
-                        if (dictRes.ok) {
-                            const dictData = await dictRes.json();
-                            const entry = dictData[0];
-                            const phonetic = entry.phonetic || (entry.phonetics && entry.phonetics.find(p => p.text)?.text) || '';
-                            const audioUrl = entry.phonetics && entry.phonetics.find(p => p.audio && p.audio !== '')?.audio || '';
-
-                            // 유의어(Synonyms) 및 반의어(Antonyms) 수집 로직 통합 고도화
-                            entry.meanings.forEach(meaning => {
-                                if (meaning.synonyms && meaning.synonyms.length > 0) {
-                                    synonymsList.push(...meaning.synonyms);
-                                }
-                                if (meaning.antonyms && meaning.antonyms.length > 0) {
-                                    antonymsList.push(...meaning.antonyms);
-                                }
-                                meaning.definitions.forEach(def => {
-                                    if (def.synonyms && def.synonyms.length > 0) {
-                                        synonymsList.push(...def.synonyms);
-                                    }
-                                    if (def.antonyms && def.antonyms.length > 0) {
-                                        antonymsList.push(...def.antonyms);
-                                    }
-                                });
-                            });
-
-                            // 중복 제거 및 노출 개수 필터링
-                            synonymsList = [...new Set(synonymsList)].slice(0, 6);
-                            antonymsList = [...new Set(antonymsList)].slice(0, 6);
-
-                            // 영문 의미 및 예문들과 함께 유의어/반의어도 묶음으로 처리해 통합 한국어 번역 수행
-                            let itemsToTranslate = [];
-                            entry.meanings.slice(0, 2).forEach(meaning => {
-                                meaning.definitions.slice(0, 2).forEach(def => {
-                                    itemsToTranslate.push(`[DEF] ${def.definition}`);
-                                    if (def.example) {
-                                        itemsToTranslate.push(`[EX] ${def.example}`);
-                                    }
-                                });
-                            });
-
-                            // 유의어 및 반의어 통합 번역 추가 등록
-                            let synIndexInTranslation = -1;
-                            let antIndexInTranslation = -1;
-
-                            if (synonymsList.length > 0) {
-                                itemsToTranslate.push(`[SYN] ${synonymsList.join(', ')}`);
-                                synIndexInTranslation = itemsToTranslate.length - 1;
-                            }
-                            if (antonymsList.length > 0) {
-                                itemsToTranslate.push(`[ANT] ${antonymsList.join(', ')}`);
-                                antIndexInTranslation = itemsToTranslate.length - 1;
-                            }
-
-                            let translatedDefinitionsMap = {};
-                            let translatedExamplesMap = {};
-                            let translatedSynonymsString = '';
-                            let translatedAntonymsString = '';
-
-                            if (itemsToTranslate.length > 0) {
-                                // 의미, 예문, 유의어를 [BREAK] 구분자로 연결하여 1회에 일괄 번역 요청 (네트워크 지연 원천 최소화)
-                                const combinedText = itemsToTranslate.join(" [BREAK] ");
-                                const dictTranslateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q=${encodeURIComponent(combinedText)}`;
-                                const dictTranslateRes = await fetch(dictTranslateUrl);
-                                const dictTranslateData = await dictTranslateRes.json();
-                                const dictTranslatedCombined = dictTranslateData[0].map(item => item[0]).join('');
-
-                                // 번역 결과 파싱 및 디코딩
-                                const translatedItems = dictTranslatedCombined.split(/\s*\[BREAK\]\s*/i);
-                                
-                                let translationIndex = 0;
-                                entry.meanings.slice(0, 2).forEach(meaning => {
-                                    meaning.definitions.slice(0, 2).forEach(def => {
-                                        // 원본 영문 정의를 키값으로 맵에 매핑
-                                        const rawDef = def.definition;
-                                        let cleanDefTranslation = translatedItems[translationIndex] || '';
-                                        // 번역기 특성상 접두어가 소폭 왜곡된 것 정제
-                                        cleanDefTranslation = cleanDefTranslation.replace(/^\[?DEF\]?\s*/i, '').trim();
-                                        translatedDefinitionsMap[rawDef] = cleanDefTranslation;
-                                        translationIndex++;
-
-                                        if (def.example) {
-                                            const rawEx = def.example;
-                                            let cleanExTranslation = translatedItems[translationIndex] || '';
-                                            cleanExTranslation = cleanExTranslation.replace(/^\[?EX\]?\s*/i, '').trim();
-                                            translatedExamplesMap[rawEx] = cleanExTranslation;
-                                            translationIndex++;
-                                        }
-                                    });
-                                });
-
-                                // 유의어 및 반의어 한국어 번역 결과 확보
-                                if (synIndexInTranslation !== -1 && translatedItems[synIndexInTranslation]) {
-                                    translatedSynonymsString = translatedItems[synIndexInTranslation].replace(/^\[?SYN\]?\s*/i, '').trim();
-                                }
-                                if (antIndexInTranslation !== -1 && translatedItems[antIndexInTranslation]) {
-                                    translatedAntonymsString = translatedItems[antIndexInTranslation].replace(/^\[?ANT\]?\s*/i, '').trim();
-                                }
-                            }
-
-                            // 한국어 기반 결과 카드 생성
-                            dictHtml += `
-                                <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(4, 120, 87, 0.15);">
-                                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                                        <span style="font-size: 15px; font-weight: 700; color: #ffffff;">${entry.word}</span>
-                                        ${phonetic ? `<span style="font-size: 11px; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 1px 6px; border-radius: 4px;">${phonetic}</span>` : ''}
-                                        ${audioUrl ? `
-                                            <button onclick="new Audio('${audioUrl}').play()" style="background: rgba(4, 120, 87, 0.15); border: 1px solid rgba(4, 120, 87, 0.3); color: #34d399; font-size: 10.5px; padding: 2px 8px; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.2s;">
-                                                🔊 발음 듣기
-                                            </button>
-                                        ` : ''}
-                                    </div>
-                            `;
-
-                            // 뜻 풀이 데이터 추출 (영어를 모두 한국어로 전치 완료)
-                            entry.meanings.slice(0, 2).forEach(meaning => {
-                                // 품사 한글 맵핑 유틸리티
-                                let partOfSpeechKr = meaning.partOfSpeech;
-                                if (partOfSpeechKr === 'noun') partOfSpeechKr = '명사';
-                                else if (partOfSpeechKr === 'verb') partOfSpeechKr = '동사';
-                                else if (partOfSpeechKr === 'adjective') partOfSpeechKr = '형용사';
-                                else if (partOfSpeechKr === 'adverb') partOfSpeechKr = '부사';
-                                else if (partOfSpeechKr === 'pronoun') partOfSpeechKr = '대명사';
-                                else if (partOfSpeechKr === 'preposition') partOfSpeechKr = '전치사';
-                                else if (partOfSpeechKr === 'conjunction') partOfSpeechKr = '접속사';
-
-                                dictHtml += `
-                                    <div style="margin-top: 8px;">
-                                        <span style="font-size: 10px; font-weight: 600; color: #34d399; background: rgba(4, 120, 87, 0.15); padding: 1px 5px; border-radius: 3px; text-transform: uppercase;">${partOfSpeechKr}</span>
-                                        <ul style="margin: 4px 0 0 14px; list-style-type: decimal; color: #cbd5e1; font-size: 12px;">
-                                `;
-                                meaning.definitions.slice(0, 2).forEach(def => {
-                                    const translatedDef = translatedDefinitionsMap[def.definition] || def.definition;
-                                    const translatedEx = def.example ? (translatedExamplesMap[def.example] || '') : '';
-
-                                    dictHtml += `
-                                        <li style="margin-bottom: 3.5px; line-height: 1.45;">
-                                            <div style="color: #ffffff;">${translatedDef}</div>
-                                            ${def.example ? `
-                                                <div style="font-size: 11px; color: #94a3b8; font-style: italic; margin-top: 1px; display:flex; flex-direction:column; gap:1px; padding-left: 4px; border-left: 2px solid rgba(4, 120, 87, 0.2);">
-                                                    <span style="color: #cbd5e1;">Ex: "${def.example}"</span>
-                                                    <span style="color: #84cc16; font-size: 10.5px;">뜻: ${translatedEx}</span>
-                                                </div>
-                                            ` : ''}
-                                        </li>
-                                    `;
-                                });
-                                dictHtml += `</ul></div>`;
-                            });
-
-                            // ★ 유의어 및 반의어 HTML 구조화 통합 고도화
-                            let saHtml = '';
-                            if (synonymsList.length > 0 || antonymsList.length > 0) {
-                                saHtml += `
-                                    <div style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(4, 120, 87, 0.15); display: flex; flex-direction: column; gap: 8px;">
-                                `;
-
-                                if (synonymsList.length > 0) {
-                                    saHtml += `
-                                        <div style="display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap;">
-                                            <span style="font-size: 10.5px; font-weight: 600; color: #34d399; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.2); padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">유의어</span>
-                                            <div style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;">
-                                    `;
-                                    synonymsList.forEach(syn => {
-                                        saHtml += `
-                                            <span class="voca-tag" style="font-size: 10.5px; padding: 1px 5px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);" onclick="searchDirectly('${syn.replace(/'/g, "\\'")}')">
-                                                ${escapeHtml(syn)}
-                                            </span>
-                                        `;
-                                    });
-                                    if (translatedSynonymsString) {
-                                        saHtml += `
-                                            <span style="font-size: 10.5px; color: #64748b; margin-left: 2px;">(${escapeHtml(translatedSynonymsString)})</span>
-                                        `;
-                                    }
-                                    saHtml += `</div></div>`;
-                                }
-
-                                if (antonymsList.length > 0) {
-                                    saHtml += `
-                                        <div style="display: flex; align-items: flex-start; gap: 6px; flex-wrap: wrap;">
-                                            <span style="font-size: 10.5px; font-weight: 600; color: #f87171; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.2); padding: 1px 5px; border-radius: 3px; flex-shrink: 0;">반의어</span>
-                                            <div style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;">
-                                    `;
-                                    antonymsList.forEach(ant => {
-                                        saHtml += `
-                                            <span class="voca-tag" style="font-size: 10.5px; padding: 1px 5px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);" onclick="searchDirectly('${ant.replace(/'/g, "\\'")}')">
-                                                ${escapeHtml(ant)}
-                                            </span>
-                                        `;
-                                    });
-                                    if (translatedAntonymsString) {
-                                        saHtml += `
-                                            <span style="font-size: 10.5px; color: #64748b; margin-left: 2px;">(${escapeHtml(translatedAntonymsString)})</span>
-                                        `;
-                                    }
-                                    saHtml += `</div></div>`;
-                                }
-
-                                saHtml += `</div>`;
-                            }
-
-                            dictHtml += saHtml + `</div>`;
-                        }
-                    } catch (e) {
-                        console.log("English dictionary lookup not found", e);
-                    }
-                }
-
-                // 웹페이지 내부 시각화 화면 구성 (한자어 정보 포함)
-                let resultHtml = `
-                    <div class="answer-content">
-                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(4, 120, 87, 0.15); padding-bottom: 8px; margin-bottom: 6px;">
-                            <div>
-                                <h3 style="margin: 0; font-size: 18px; color: #ffffff; font-weight: 700; letter-spacing: 0.5px;">${escapeHtml(query)}</h3>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 14px; font-weight: 700; color: #10b981;">${escapeHtml(translationText)}</div>
-                            </div>
-                        </div>
-                        ${hanjaHtmlBlock}
-                        ${dictHtml}
-                    </div>
-                `;
-
-                viewport.innerHTML = resultHtml;
-
-            } catch (err) {
-                console.error(err);
-                viewport.innerHTML = `
-                    <div style="color: #ef4444; font-size: 12px; padding: 10px; text-align: center;">
-                        ⚠️ 검색 중 일시적인 지연이 발생했습니다. 검색어 확인 후 다시 입력해주세요.
-                    </div>
-                `;
-            }
-
-            // 입력 필드 초기화 및 포커스 복원
-            inputField.value = '';
-            inputField.focus();
-        }
-
-        // localStorage에서 최근 검색 단어 로드
-        function loadRecentWords() {
-            try {
-                const saved = localStorage.getItem('voca_recent_searches');
-                if (saved) {
-                    recentWords = JSON.parse(saved);
-                }
-            } catch (e) {
-                console.error("단어장을 불러오는 중 에러 발생: ", e);
-                recentWords = [];
-            }
-        }
-
-        // 단어 저장 로직 (최대 15개 유지 및 중복 단어 제거 처리)
-        function addWordToStorage(word) {
-            recentWords = recentWords.filter(w => w.toLowerCase() !== word.toLowerCase());
-            recentWords.unshift(word);
-
-            if (recentWords.length > 15) {
-                recentWords = recentWords.slice(0, 15);
-            }
-
-            localStorage.setItem('voca_recent_searches', JSON.stringify(recentWords));
-        }
-
-        // 특정 단어만 삭제
-        function deleteWord(index, event) {
-            if (event) event.stopPropagation(); // 부모 칩 클릭 이벤트 차단
-            recentWords.splice(index, 1);
-            localStorage.setItem('voca_recent_searches', JSON.stringify(recentWords));
-            renderRecentWords();
-        }
-
-        // 단어장 전체 비우기
-        function clearAllWords() {
-            recentWords = [];
-            localStorage.removeItem('voca_recent_searches');
-            renderRecentWords();
-        }
-
-        // 단어장 타일을 눌렀을 때 사전으로 바로 검색하는 숏컷
-        function searchDirectly(word) {
-            document.getElementById('vocaQueryInput').value = word;
-            searchWord();
-        }
-
-        // 초기 대기 상태 화면 렌더링 (최근 검색어 관리)
-        function renderRecentWords() {
-            const viewport = document.getElementById('vocaAnswerViewport');
-            
-            if (recentWords.length === 0) {
-                viewport.innerHTML = `
-                    <div style="color: #64748b; font-size: 12px; display: flex; align-items: center; justify-content: center; min-height: 24px; width: 100%;">
-                        최근 검색한 단어가 없습니다. 위 검색창에 학습하려는 영단어나 예문을 검색해 보세요!
-                    </div>
-                `;
-                return;
-            }
-
-            let html = `
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 4px;">
-                    <span style="color: #94a3b8; font-weight: 600; font-size: 11px;">최근 검색어 (클릭 시 재검색)</span>
-                    <button class="voca-clear-btn" onclick="clearAllWords()">전체 삭제</button>
-                </div>
-                <div class="voca-tag-wrapper">
-            `;
-
-            recentWords.forEach((word, index) => {
-                html += `
-                    <span class="voca-tag" onclick="searchDirectly('${word.replace(/'/g, "\\'")}')">
-                        <span>${escapeHtml(word)}</span>
-                        <span class="voca-tag-delete" onclick="deleteWord(${index}, event)">✕</span>
-                    </span>
-                `;
-            });
-
-            html += `</div>`;
-            viewport.innerHTML = html;
-        }
-
-        // XSS 차단을 위한 보안 엔티티 치환 헬퍼 함수
-        function escapeHtml(text) {
-            return text
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-    </script>
 
 </body>
 </html>
